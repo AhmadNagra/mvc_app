@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace mvc_app.Models
+namespace mvc_app.Models.Home
 {
     public class FileDetails
     {
@@ -13,7 +10,7 @@ namespace mvc_app.Models
 
     public class FilesViewModel
     {
-        public List<FileDetails> Files { get; set; }
+        public List<FileDetails> Files { get; set; } 
             = new List<FileDetails>();
     }
 }

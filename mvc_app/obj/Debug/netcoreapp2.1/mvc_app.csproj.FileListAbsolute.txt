@@ -26,4 +26,5 @@ C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.Views.pdb
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.dll
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.pdb
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csproj.CopyComplete
-C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Home\Registration.g.cshtml.cs
+C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Home\Files.g.cshtml.cs
+C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
