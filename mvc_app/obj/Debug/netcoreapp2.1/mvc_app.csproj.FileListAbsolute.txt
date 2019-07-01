@@ -5,7 +5,6 @@ C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\bin\Debug\netcoreapp2.1
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\bin\Debug\netcoreapp2.1\mvc_app.pdb
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\bin\Debug\netcoreapp2.1\mvc_app.Views.dll
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\bin\Debug\netcoreapp2.1\mvc_app.Views.pdb
-C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csprojAssemblyReference.cache
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csproj.CoreCompileInputs.cache
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.RazorAssemblyInfo.cache
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.RazorAssemblyInfo.cs
@@ -30,3 +29,6 @@ C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.dll
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.pdb
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csproj.CopyComplete
+C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csprojAssemblyReference.cache
+C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Register\InputView.g.cshtml.cs
+C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Register\OutputView.g.cshtml.cs

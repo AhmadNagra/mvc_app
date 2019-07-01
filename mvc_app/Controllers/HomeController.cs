@@ -18,7 +18,7 @@ namespace mvc_app.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "The Version is:" + (typeof (Controller).Assembly.GetName().Version);
 
             return View();
         }
