@@ -10,6 +10,7 @@ namespace mvc_app.Controllers
 {
     public class HomeController : Controller
     {
+        public int x = 10;
         public IActionResult Index()
         {
             return View();
