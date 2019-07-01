@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Student Registration";
+}
+
+<h1>Welcome to Student Registration Form.</h1>
+<strong> Enter the Student Details</strong><br />
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>Name : </td>
+            <td><input id="SName" type="text" /></td>
+        </tr>
+        <tr>
+            <td>Age : </td>
+            <td><input id="SAge" type="text" /></td>
+        </tr>
+        <tr>
+            <td>City : </td>
+            <td>
+                <select>
+                    <option value="islamabad">Islamabad</option>
+                    <option value="rawalpindi">Rawalpindi</option>
+                    <option value="multan">Multan</option>
+                    <option value="gujrat">Gujrat</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>Subject : </td>
+            <td><textarea rows="4" cols="50">
+                This is to test the validity of our subject boss. I'm just trying to make this longer
+            </textarea></td>
+        </tr>
+        <tr>
+            <td>Mob No : </td>
+            <td><input id="SMob" type="text" /></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input id="Submit" type="button" value="Save Details" /></td>
+        </tr>
+    </table>
+}
