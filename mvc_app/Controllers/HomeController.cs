@@ -20,6 +20,10 @@ namespace mvc_app.Controllers
         {
             return View();
         }
-        
+        [HttpPost]
+        public IActionResult mypage( String name)
+        {
+            return View();
+        }
     }
 }
