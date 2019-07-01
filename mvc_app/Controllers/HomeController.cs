@@ -23,24 +23,6 @@ namespace mvc_app.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UploadFile(IFormFile file)
-        {
-            if (file == null || file.Length == 0)
-                return Content("file not selected");
-
-            var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot",
-                        file.GetFilename());
-
-            using (var stream = new FileStream(path, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
-
-            return RedirectToAction("Files");
-        }
-
-        [HttpPost]
         public async Task<IActionResult> UploadFiles(List<IFormFile> files)
         {
             if (files == null || files.Count == 0)
@@ -61,24 +43,24 @@ namespace mvc_app.Controllers
             return RedirectToAction("Files");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> UploadFileViaModel(FileInputModel model)
-        {
-            if (model == null ||
-                model.FileToUpload == null || model.FileToUpload.Length == 0)
-                return Content("file not selected");
+        //[HttpPost]
+        //public async Task<IActionResult> UploadFileViaModel(FileInputModel model)
+        //{
+        //    if (model == null ||
+        //        model.FileToUpload == null || model.FileToUpload.Length == 0)
+        //        return Content("file not selected");
 
-            var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot",
-                        model.FileToUpload.GetFilename());
+        //    var path = Path.Combine(
+        //                Directory.GetCurrentDirectory(), "wwwroot",
+        //                model.FileToUpload.GetFilename());
 
-            using (var stream = new FileStream(path, FileMode.Create))
-            {
-                await model.FileToUpload.CopyToAsync(stream);
-            }
+        //    using (var stream = new FileStream(path, FileMode.Create))
+        //    {
+        //        await model.FileToUpload.CopyToAsync(stream);
+        //    }
 
-            return RedirectToAction("Files");
-        }
+        //    return RedirectToAction("Files");
+        //}
 
         public IActionResult Files()
         {
