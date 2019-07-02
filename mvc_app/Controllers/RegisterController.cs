@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using mvc_app.Models;
 
@@ -9,22 +11,24 @@ namespace mvc_app.Controllers
 {
     public class RegisterController : Controller
     {
+        private OutputClass X = new OutputClass();
        
+   
         public IActionResult InputView()
-        {
+        {          
             return View();
         }
-        public IActionResult OutputView()
+      
+        public IActionResult DecideView()
         {
-            OutputClass X = new OutputClass();
-            StudentRegisterationModel T = new StudentRegisterationModel();
-            T.name = "Saad";T.detail = "I am tired of this.";T.program = "BS(CS)";
-            X.StudentList.Add(T);
+            return null;
+        }
+        public IActionResult OutputView(StudentRegisterationModel M)
+        {
+            X.StudentList.Add(M);
+          
             return View(X);
         }
-        public string Hi()
-        {
-            return "Hello";
-        }
+        
     }
 }

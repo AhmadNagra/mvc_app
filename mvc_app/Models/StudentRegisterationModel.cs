@@ -13,6 +13,7 @@ namespace mvc_app.Models
         [Required(ErrorMessage = "Select a Program")]
         public string program { get; set; }
         public string detail { get; set; }
-        public string myFile { get; set; }
+        [Required (ErrorMessage ="Select a file to Upload")]
+        public string filename { get; set; }
     }
 }
