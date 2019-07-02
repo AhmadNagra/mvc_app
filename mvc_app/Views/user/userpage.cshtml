@@ -47,7 +47,8 @@
                     <h4 class="text-left text-primary ">Comments</h4>
                 </div>
                 <div class="col-sm-8">
-                    @Html.TextArea("Comments")
+                    <textarea asp-for="Comments" rows="5" cols="20"></textarea>
+                    <span asp-validation-for="Comments" class="text-danger"></span>
                 </div>
             </div>
 

@@ -18,7 +18,43 @@
     <li>@Model.Email</li>
     <li>@Model.Name</li>
 </ul>
+<table class="table">
+    <thead>
+        <tr>
 
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Comments</th>
+            <th scope="col">Choices</th>
+            <th scope="col">File</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+           
+            <td>@Model.Name</td>
+            <td>@Model.Email</td>
+            <td>@Model.Comments</td>
+            <td>@Model.Choice</td>
+            <td>@Model.FilePath</td>
+
+
+
+        </tr>
+        <tr>
+          
+            <td></td>
+            <td></td>
+            
+        </tr>
+        <tr>
+           
+            <td></td>
+            <td></td>
+           
+        </tr>
+    </tbody>
+</table>
 
 <img src="~/images/@ViewBag.file " width="120" height="100" />
 <br />
