@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace mvc_app.Models
         [Required(ErrorMessage = "Select a Program")]
         public string program { get; set; }
         public string detail { get; set; }
-        [Required (ErrorMessage ="Select a file to Upload")]
-        public string filename { get; set; }
+        
+        public  IFormFile file{ get; set; }
     }
 }

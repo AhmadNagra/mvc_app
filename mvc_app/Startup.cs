@@ -61,12 +61,7 @@ namespace mvc_app
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Register}/{action=InputView}/{id?}");
-                routes.MapRoute(
-                    name: "InputView",
-                     template: "{controller=Register}/{action=InputView}/{id?}");
-               
-
+                     template: "{controller=Register}/{action=InputView}/{id?}");             
             });
         }
     }
