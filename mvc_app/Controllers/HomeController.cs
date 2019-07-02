@@ -43,32 +43,13 @@ namespace mvc_app.Controllers
             return RedirectToAction("Files");
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> UploadFileViaModel(FileInputModel model)
-        //{
-        //    if (model == null ||
-        //        model.FileToUpload == null || model.FileToUpload.Length == 0)
-        //        return Content("file not selected");
-
-        //    var path = Path.Combine(
-        //                Directory.GetCurrentDirectory(), "wwwroot",
-        //                model.FileToUpload.GetFilename());
-
-        //    using (var stream = new FileStream(path, FileMode.Create))
-        //    {
-        //        await model.FileToUpload.CopyToAsync(stream);
-        //    }
-
-        //    return RedirectToAction("Files");
-        //}
 
         public IActionResult Files()
         {
             var model = new FilesViewModel();
             foreach (var item in this.fileProvider.GetDirectoryContents(""))
             {
-                model.Files.Add(
-                    new FileDetails { Name = item.Name, Path = item.PhysicalPath });
+                model.Files.Add(new FileDetails { Name = item.Name, Path = item.PhysicalPath });
             }
             return View(model);
         }
@@ -112,7 +93,8 @@ namespace mvc_app.Controllers
                 {".jpg", "image/jpeg"},
                 {".jpeg", "image/jpeg"},
                 {".gif", "image/gif"},
-                {".csv", "text/csv"}
+                {".csv", "text/csv"},
+                {".cs","text/plain" }
             };
         }
     }

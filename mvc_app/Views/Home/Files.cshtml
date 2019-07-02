@@ -1,13 +1,51 @@
 ﻿@model mvc_app.Models.Home.FilesViewModel
 
-<ul>
-    @foreach (var item in Model.Files)
-    {
-        <li>
-            <a asp-action="Download"
-               asp-route-filename="@item.Name">
-                @item.Name
-            </a>
-        </li>
+
+<head>
+    <link rel="stylesheet" href="/css/Filecss.css">
+</head>
+
+<div class="wrapper">
+    <button onclick="sortList()">Sort</button>
+    <ul id="id01">
+        @foreach (var item in Model.Files)
+        {
+            <li>
+                <a asp-action="Download"
+                   asp-route-filename="@item.Name">
+                    @item.Name
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+<script>
+    function sortList() {
+        var list, i, switching, b, shouldSwitch;
+        list = document.getElementById("id01");
+        switching = true;
+      
+        while (switching) {
+            
+            switching = false;
+            b = list.getElementsByTagName("LI");
+           
+            for (i = 0; i < (b.length - 1); i++) {
+                
+                shouldSwitch = false;
+               
+                if (b[i].innerHTML.toLowerCase() < b[i + 1].innerHTML.toLowerCase()) {
+                    
+                    shouldSwitch = true;
+                    break;
+                }
+            }
+            if (shouldSwitch) {
+                
+                b[i].parentNode.insertBefore(b[i + 1], b[i]);
+                switching = true;
+            }
+        }
     }
-</ul>
+</script>
