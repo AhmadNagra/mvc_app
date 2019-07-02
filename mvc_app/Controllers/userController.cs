@@ -23,36 +23,77 @@ namespace mvc_app.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Upload(List<IFormFile> file,UserModel usermodel)
+        public IActionResult Upload(IFormFile file,UserModel usermodel)
         {
             if (ModelState.IsValid)
             {
-              //  var ListModel = new UserModel();
-                foreach (var files in file)
+                
+                var path = Path.Combine(hostingEnvironment.WebRootPath, "images", file.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
                 {
-                    var path = Path.Combine(hostingEnvironment.WebRootPath, "images", files.FileName);
-                    var stream = new FileStream(path, FileMode.Create);
-                    files.CopyToAsync(stream);
-                    ViewBag.file = files.FileName;
+                    file.CopyToAsync(stream);
+                    ViewBag.file = file.FileName;
                     var modelData = new FileAttribute();
-                    modelData.Names = files.FileName;
+                    modelData.Names = file.FileName;
                     modelData.path = path;
-                    usermodel.FilePath.Add(modelData);
+                    usermodel.FilePath=modelData;
+
                 }
+
 
                 return View(usermodel);
             }
             else
-                return View();
+                return View("userpage");
 
 
 
         }
-        public FileResult Download()
+        public FileResult Download(string FileToDownload)
         {
-            var path = Path.Combine(hostingEnvironment.WebRootPath, "images","formimage.jpg");
-            var stream = new FileStream(path, FileMode.Open);
-            return File(stream, "image/jpg","dummy.jpg");
+            UserModel model = new UserModel();
+            var path = Path.Combine(hostingEnvironment.WebRootPath, "images",FileToDownload);
+            FileStream stream = new FileStream(path, FileMode.Create);
+            return File(stream, "image/png", FileToDownload);
+        }
+
+        public async Task<IActionResult> DownloadDiffFiles(string FileToDownload)
+        {
+            if (FileToDownload == null)
+                return Content("filename not present");
+
+            var path = Path.Combine(hostingEnvironment.WebRootPath, "images", FileToDownload);
+
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            return File(memory, GetContentType(path), Path.GetFileName(path));
+        }
+        private string GetContentType(string path)
+        {
+            var types = GetMimeTypes();
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            return types[ext];
+        }
+        private Dictionary<string, string> GetMimeTypes()
+        {
+            return new Dictionary<string, string>
+            {
+                {".txt", "text/plain"},
+                {".pdf", "application/pdf"},
+                {".doc", "application/vnd.ms-word"},
+                {".docx", "application/vnd.ms-word"},
+                {".xls", "application/vnd.ms-excel"},
+                {".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+                {".png", "image/png"},
+                {".jpg", "image/jpeg"},
+                {".jpeg", "image/jpeg"},
+                {".gif", "image/gif"},
+                {".csv", "text/csv"}
+            };
         }
         [HttpGet]
         public IActionResult userpage()
