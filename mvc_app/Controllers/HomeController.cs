@@ -59,7 +59,7 @@ namespace mvc_app.Controllers
         {
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Files", "Home");
             }
 
             return View("Index");
