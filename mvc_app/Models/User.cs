@@ -13,16 +13,16 @@ namespace core.Models
         public string Name { get; set; }
 
         [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")]
-        [Required]
+        [Required(ErrorMessage = "Email is required")]
         public string email_address { get; set; }
 
         [RegularExpression(@"^[0 - 9]{1, 45}$")]
-        [Required]
+        [Required(ErrorMessage = "Phone number is required")]
         public int phone_number { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Job Type is required")]
         public string job_type { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Password is required")]
         public string password { get; set; }
     }
 }

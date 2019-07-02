@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.IO;
+using core.Models;
 using mvc_app.Models.Home;
 using Microsoft.Extensions.FileProviders;
 
@@ -52,6 +53,16 @@ namespace mvc_app.Controllers
                 model.Files.Add(new FileDetails { Name = item.Name, Path = item.PhysicalPath });
             }
             return View(model);
+        }
+
+        public IActionResult Validate(User u)
+        {
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View("Index");
         }
 
         public async Task<IActionResult> Download(string filename)

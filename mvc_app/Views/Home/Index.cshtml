@@ -16,7 +16,7 @@
         <article class="card-body mx-auto" style="max-width: 400px;">
             <h4 class="card-title mt-3 text-center">Create Account</h4>
             <p class="text-center">Get started with your free account</p>
-            <form>
+            <form asp-action="Validate" asp-controller="Home">
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
@@ -29,7 +29,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                     </div>
-                    <input name="" class="form-control" placeholder="Email address" type="email">
+                    <input asp-for="email_address" name="" class="form-control" placeholder="Email address" type="email">
+                    <span asp-validation-for="email_address" class="text-danger"></span>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -41,7 +42,8 @@
                         <option value="2">+93</option>
                         <option value="3">+94</option>
                     </select>
-                    <input name="" class="form-control" placeholder="Phone number" type="text">
+                    <input asp-for="phone_number" name="" class="form-control" placeholder="Phone number" type="text">
+                    <span asp-validation-for="phone_number" class="text-danger"></span>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
@@ -58,15 +60,21 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Create password" type="password">
+                    <input asp-for="password" class="form-control" placeholder="Create password" type="password">
+                    <span asp-validation-for="password" class="text-danger"></span>
                 </div>
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                     </div>
-                    <input class="form-control" placeholder="Repeat password" type="password">
+                    <input asp-for="password" class="form-control" placeholder="Repeat password" type="password">
+                    <span asp-validation-for="password" class="text-danger"></span>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary btn-block"> Verify Validation  </button>
                 </div>
             </form>
+            <br>
             <form asp-controller="Home" asp-action="UploadFiles" method="post" enctype="multipart/form-data">
                 <input type="file" class="btn btn-success btn-block" name="files" multiple />
                 <button type="submit" class="btn btn-primary btn-block"> Upload Files  </button>
