@@ -13,7 +13,12 @@ namespace mvc_app.Controllers
         {
             return View();
         }
-        //[HttpPost]
+        public IActionResult SetEmployeDetail(User user)
+        {
+
+            return View(user);
+        }
+
         //public IActionResult Emp_View(User model)
 
         //{
@@ -25,6 +30,6 @@ namespace mvc_app.Controllers
         //    ModelState.Clear();
         //        return View();
         //}
-        
+
     }
 }

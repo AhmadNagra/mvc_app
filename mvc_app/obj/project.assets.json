@@ -12538,9 +12538,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sata\\Desktop\\mvctask\\mvc_app\\mvc_app\\mvc_app.csproj",
-      "projectName": "mvc_app",
-      "projectPath": "C:\\Users\\sata\\Desktop\\mvctask\\mvc_app\\mvc_app\\mvc_app.csproj",
+      "projectUniqueName": "C:\\Users\\sata\\Desktop\\mvctask\\mvc_app\\mvc_app\\Employe_Form.csproj",
+      "projectName": "Employe_Form",
+      "projectPath": "C:\\Users\\sata\\Desktop\\mvctask\\mvc_app\\mvc_app\\Employe_Form.csproj",
       "packagesPath": "C:\\Users\\sata\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\sata\\Desktop\\mvctask\\mvc_app\\mvc_app\\obj\\",
       "projectStyle": "PackageReference",

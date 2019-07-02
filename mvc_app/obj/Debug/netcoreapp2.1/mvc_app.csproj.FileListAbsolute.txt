@@ -31,4 +31,4 @@ C:\Users\sata\Desktop\mvctask\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.dl
 C:\Users\sata\Desktop\mvctask\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.pdb
 C:\Users\sata\Desktop\mvctask\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csproj.CopyComplete
 C:\Users\sata\Desktop\mvctask\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\User\Emp_View.g.cshtml.cs
-C:\Users\sata\Desktop\mvctask\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Employe_detail\SetEmployeDetail.g.cshtml.cs
+C:\Users\sata\Desktop\mvctask\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\User\SetEmployeDetail.g.cshtml.cs

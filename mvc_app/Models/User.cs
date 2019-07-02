@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations;
 
 namespace mvc_app.Models
 {
@@ -14,7 +15,7 @@ namespace mvc_app.Models
 
         public string Address { get; set; }
 
-        public string File { get; set; }
+        public IFormFile File { get; set; }
 
     }
 }
