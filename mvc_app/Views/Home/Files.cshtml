@@ -4,15 +4,14 @@
 <head>
     <link rel="stylesheet" href="/css/Filecss.css">
 </head>
-
+<input type="text" id="myInput" onkeyup="Search()" placeholder="Search for files.." title="Type in a File">
 <div class="wrapper">
     <button onclick="sortList()">Sort</button>
     <ul id="id01">
         @foreach (var item in Model.Files)
         {
             <li>
-                <a asp-action="Download"
-                   asp-route-filename="@item.Name">
+                <a asp-action="Download" asp-route-filename="@item.Name">
                     @item.Name
                 </a>
             </li>
@@ -45,6 +44,22 @@
                 
                 b[i].parentNode.insertBefore(b[i + 1], b[i]);
                 switching = true;
+            }
+        }
+    }
+    function Search() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("id01");
+        li = ul.getElementsByTagName("li");
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
             }
         }
     }

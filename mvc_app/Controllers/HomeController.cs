@@ -70,9 +70,7 @@ namespace mvc_app.Controllers
             if (filename == null)
                 return Content("filename not present");
 
-            var path = Path.Combine(
-                           Directory.GetCurrentDirectory(),
-                           "wwwroot", filename);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filename);
 
             var memory = new MemoryStream();
             using (var stream = new FileStream(path, FileMode.Open))
