@@ -23,53 +23,45 @@ namespace mvc_app.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Upload(List<IFormFile> file)
+        public IActionResult Upload(List<IFormFile> file,UserModel usermodel)
         {
-            var ListModel = new FileModel();
-            foreach (var files in file)
+            if (ModelState.IsValid)
             {
-                var path = Path.Combine(hostingEnvironment.WebRootPath, "images", files.FileName);
-                var stream = new FileStream(path, FileMode.Create);
-                files.CopyToAsync(stream);
-                ViewBag.file = files.FileName;
-                var modelData = new FileAttribute();
-                modelData.Names = files.FileName;
-                modelData.path = path;
-              
-                ListModel.FilePath.Add(modelData);
+                var ListModel = new FileModel();
+                foreach (var files in file)
+                {
+                    var path = Path.Combine(hostingEnvironment.WebRootPath, "images", files.FileName);
+                    var stream = new FileStream(path, FileMode.Create);
+                    files.CopyToAsync(stream);
+                    ViewBag.file = files.FileName;
+                    var modelData = new FileAttribute();
+                    modelData.Names = files.FileName;
+                    modelData.path = path;
+
+                    ListModel.FilePath.Add(modelData);
+                }
+
+                return View(ListModel);
             }
-            return View(ListModel);
+            else
+                return View("Index");
+
+
+
         }
-
-        
-
         public FileResult Download()
         {
-            var path = Path.Combine(hostingEnvironment.WebRootPath, "images","formicon.png");
+            var path = Path.Combine(hostingEnvironment.WebRootPath, "images","formimage.jpg");
             var stream = new FileStream(path, FileMode.Open);
-            
             return File(stream, "image/jpg","dummy.jpg");
         }
         [HttpGet]
         public IActionResult userpage()
         {
             return View();
-        }
-
-        [HttpPost]
-        public IActionResult userpage(UserModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                checkInfo(model.Name,model.Email,model.Comments);
-                return RedirectToAction("Index", "Home");
-            }
-            return View();
-        }
-
-        private void checkInfo(string name, string email, string comments)
-        {
            
         }
+
+       
     }
 }
