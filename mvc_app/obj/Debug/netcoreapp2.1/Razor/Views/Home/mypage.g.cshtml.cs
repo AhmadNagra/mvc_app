@@ -71,7 +71,7 @@ using mvc_app.Models;
             WriteLiteral("\r\n\r\n\r\n<div class=\"container\" style=\"border:solid 1px; margin:2%; padding:2%;\">\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-sm-4\">\r\n            ");
             EndContext();
             BeginContext(193, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "8ae0b63a1de245a08396ce0f2cc2baf2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "81a094633cf74a10a3acd9c299fc0d6b", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -93,7 +93,7 @@ using mvc_app.Models;
             WriteLiteral("\r\n        </div>\r\n        <div class=\"col-sm-8\">\r\n            <h2 class=\"text-left\">Please fill in the form </h2>\r\n        </div>\r\n    </div>\r\n    <br /><br />\r\n\r\n\r\n\r\n\r\n          ");
             EndContext();
             BeginContext(476, 1124, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d08214cae8a149a592f7bb3f2e46b3fb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "102692c60b8b4a5ea829d4be4ff1b1fe", async() => {
                 BeginContext(513, 143, true);
                 WriteLiteral("\r\n              <div class=\"row\" style=\"display:block; margin:2% 0% 0% 10%;\">\r\n                  <div class=\"col-sm-4\">\r\n                      ");
                 EndContext();

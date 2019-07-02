@@ -6,8 +6,8 @@
 
 }
 
-
-<div class="container" style="border:solid 1px; margin:2%; padding:2%; border-color:cornflowerblue; background:azure;">
+<link rel="stylesheet" href="~/css/UserStyle.css" />
+<div class="container" style=" border: solid 1px;margin: 2%;padding: 2%;border-color: cornflowerblue;background: azure;" >
 
     <div class="row">
         <div class="col-sm-4">
@@ -19,7 +19,7 @@
     </div>
     <br />
     <br />
-    <form action="/user" method="post">
+    <form method="post" asp-controller="user" asp-action="userpage" enctype="multipart/form-data">
         <div class="row" style="display:block; margin:2% 0% 0% 10%;">
             <div class="col-sm-4">
 
@@ -66,10 +66,23 @@
                 </div>
             </div>
 
-
-
-            
+            <div class="row" style="display:block; margin:2% 0% 0% 0%;">
+                <div class="col-sm-4">
+                    <h4 class="text-left text-primary ">Upload File</h4>
+                </div>
+                <div class="col-sm-8">
+                    <div class="col-sm-6"><input type="file" name="file" multiple/></div>
+                    <div class="col-sm-2">
+                        <input type="submit" value="show" asp-controller="user"  asp-action="Upload" formenctype="multipart/form-data" >
+                    </div>
+                    
+                </div>
+            </div>
             <Button type="submit" class="center-block btn-primary">Submit</Button>
+           
+
+
+          
 
 
 </form>
