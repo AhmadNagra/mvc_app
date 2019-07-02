@@ -27,7 +27,7 @@ namespace mvc_app.Controllers
         {
             if (ModelState.IsValid)
             {
-                var ListModel = new FileModel();
+            
                 foreach (var files in file)
                 {
                     var path = Path.Combine(hostingEnvironment.WebRootPath, "images", files.FileName);
@@ -37,14 +37,13 @@ namespace mvc_app.Controllers
                     var modelData = new FileAttribute();
                     modelData.Names = files.FileName;
                     modelData.path = path;
-
-                    ListModel.FilePath.Add(modelData);
+                    usermodel.FilePath.Add(modelData);
                 }
 
-                return View(ListModel);
+                return View(usermodel);
             }
             else
-                return View("Index");
+                return View("userpage");
 
 
 

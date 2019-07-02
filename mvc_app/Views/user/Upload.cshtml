@@ -1,4 +1,4 @@
-﻿@model mvc_app.Models.FileModel
+﻿@model mvc_app.Models.UserModel
 @{
     ViewData["Title"] = "Upload";
 }
@@ -7,7 +7,16 @@
     @foreach (var item in Model.FilePath)
     {
         <li>@item.Names</li>
+        <li>@item.path</li>
+       
     }
+    
+</ul>
+<ul>
+    <li>@Model.Choice</li>
+    <li>@Model.Comments</li>
+    <li>@Model.Email</li>
+    <li>@Model.Name</li>
 </ul>
 
 

@@ -21,6 +21,16 @@ namespace mvc_app.Models
         [Required(ErrorMessage = "please enter a choice")]
         public string Choice
         { get; set; }
+        public List<FileAttribute> FilePath { get; set; }
+              = new List<FileAttribute>();
+       
+
+    }
+    public class FileAttribute
+    {
+        public string Names { get; set; }
+        public string path { get; set; }
+
     }
 
 }
