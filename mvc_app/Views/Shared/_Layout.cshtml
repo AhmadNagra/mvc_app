@@ -6,8 +6,11 @@
     <title>@ViewData["Title"] - mvc_app</title>
 
     <environment include="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" type="text/css" href="~/css/TableStyle.css" />
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+       
+        @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />*@
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -16,18 +19,11 @@
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
 </head>
+
 <body>
-   
-
-    
-
-    <div class="container body-content">
+<div>
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2019 - mvc_app</p>
-        </footer>
-    </div>
+</div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>

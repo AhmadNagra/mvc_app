@@ -4,44 +4,62 @@
 }
 
 @model mvc_app.Models.UserCollection
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-</head>
-<body>
+@*<body>
 <div>
-    <table style="width: 100%">
-        <thead>
+    <table class="table">
+        <thead class="thead-dark">
         <tr>
-            <th>Name</th>
-            <th>Email Address</th>
-            <th>Phone Number</th>
-            <th>Job Type</th>
-            <th>Password</th>
-            <th>File Name</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email Address</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Job Type</th>
+            <th scope="col">File Name</th>
         </tr>
         </thead>
         <tbody>
+        @{ int i = 0;
         @foreach (var item in Model.Usercol)
-        {
-            <tr>
-                <td>@item.Name</td>
-                <td>@item.email_address</td>
-                <td>@item.phone_number</td>
-                <td>@item.job_type</td>
-                <td>@item.password</td>
-                <td><a asp-action="Download" asp-route-filename="@item.SelectedFile.FileName">@item.SelectedFile.FileName</a></td>
-            </tr>
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.email_address</td>
+                    <td>@item.phone_number</td>
+                    <td>@item.job_type</td>
+                    <td><a asp-action="Download" asp-route-filename="@item.SelectedFile.FileName">@item.SelectedFile.FileName</a></td>
+                </tr>
 
-        }      
+            }
+        }
         </tbody>
         
     </table>
 </div>
-</body>
-</html>
+</body>*@
 
+
+<table class="container">
+    <thead>
+    <tr>
+        <th><h1>Name</h1></th>
+        <th><h1>Email Address</h1></th>
+        <th><h1>Phone Number</h1></th>
+        <th><h1>Job Type</h1></th>
+        <th><h1>File Name</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+    @{ int i = 0;
+        @foreach (var item in Model.Usercol)
+         {
+             <tr>
+                 <td>@item.Name</td>
+                 <td>@item.email_address</td>
+                 <td>@item.phone_number</td>
+                 <td>@item.job_type</td>
+                 <td><a asp-action="Download" asp-route-filename="@item.SelectedFile.FileName">@item.SelectedFile.FileName</a></td>
+             </tr>
+
+         }
+    }
+    </tbody>
+</table>

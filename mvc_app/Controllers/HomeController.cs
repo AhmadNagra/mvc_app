@@ -35,9 +35,9 @@ namespace mvc_app.Controllers
             if (ModelState.IsValid)
             {
                 var path = Path.Combine(
-                    Directory.GetCurrentDirectory(), "wwwroot",
+                    Directory.GetCurrentDirectory(), "wwwroot/Files",
                     u.SelectedFile.GetFilename());
-                
+                u.FileName = u.SelectedFile.GetFilename();
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     await u.SelectedFile.CopyToAsync(stream);
@@ -55,7 +55,7 @@ namespace mvc_app.Controllers
             if (filename == null)
                 return Content("filename not present");
 
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", filename);
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files", filename);
 
             var memory = new MemoryStream();
             using (var stream = new FileStream(path, FileMode.Open))

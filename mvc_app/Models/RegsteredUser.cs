@@ -17,6 +17,7 @@ namespace mvc_app.Models
             phone_number = "";
             job_type = "";
             password = "";
+            FileName = "";
         }
 
         [StringLength(60, MinimumLength = 3, ErrorMessage = "Name must be within 3 and 60 letters")]
@@ -36,6 +37,7 @@ namespace mvc_app.Models
         public string password { get; set; }
 
         public IFormFile SelectedFile{ get; set; }
+        public string FileName { get; set; }
         
     }
     
