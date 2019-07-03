@@ -2,18 +2,22 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using mvc_app.Helper;
 using mvc_app.Models;
+using Newtonsoft.Json;
 
 namespace mvc_app.Controllers
 {
     public class UserController : Controller
     {
         private IHostingEnvironment hostingEnvironment;
-       
+        UserApi _api = new UserApi();
         public UserController(IHostingEnvironment hostingEnvironment)
         {
             this.hostingEnvironment = hostingEnvironment;
@@ -25,20 +29,17 @@ namespace mvc_app.Controllers
         [HttpPost]
         public IActionResult Upload(IFormFile file,UserModel usermodel)
         {
+
+
             if (ModelState.IsValid)
             {
-                
+
                 var path = Path.Combine(hostingEnvironment.WebRootPath, "images", file.FileName);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     file.CopyToAsync(stream);
-                    ViewBag.file = file.FileName;
-                    // var modelData = new FileAttribute();
-                    usermodel.FileNames = file.FileName;
 
-                 //   modelData.Names = file.FileName;
-                  //  modelData.path = path;
-                  //  usermodel.FilePath=modelData;
+                    usermodel.FileNames = file.FileName;
 
                 }
 
@@ -103,6 +104,50 @@ namespace mvc_app.Controllers
             return View();
            
         }
+        public async Task <IActionResult> ShowData()
+        {
+            List<UserModel> Users = new List<UserModel>();
+            HttpClient client = _api.initial();
+            HttpResponseMessage res = await client.GetAsync("api/UserModels");
+            if(res.IsSuccessStatusCode)
+            {
+                var results = res.Content.ReadAsStringAsync().Result;
+                Users = JsonConvert.DeserializeObject<List<UserModel>>(results);
+            }
+            return View(Users);
+        }
+        [HttpPost]
+        public IActionResult PostUser(IFormFile file, UserModel usermodel)
+        {
+
+
+            if (ModelState.IsValid)
+            {
+
+                var path = Path.Combine(hostingEnvironment.WebRootPath, "images", file.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    //for file data into model 
+                    file.CopyToAsync(stream);
+                    usermodel.FileNames = file.FileName;
+                    //for http post
+                    HttpClient client = _api.initial();
+                    var PostData = client.PostAsJsonAsync<UserModel>("api/UserModels", usermodel);
+                    PostData.Wait();
+                    var result = PostData.Result;
+                    if(result.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("ShowData");
+                    }
+
+
+                }
+                return View("userpage");
+            }
+            else
+                return View("userpage");
+        }
+
 
        
     }
