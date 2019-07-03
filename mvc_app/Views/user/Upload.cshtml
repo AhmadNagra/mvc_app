@@ -22,7 +22,7 @@
             <td>@Model.Email</td>
             <td>@Model.Comments</td>
             <td>@Model.Choice</td>
-            <td><a href="@Url.Action("DownloadDiffFiles", "user", new {FileToDownload =  @Model.FilePath.Names}) ">@Model.FilePath.Names</a></td>
+            <td><a href="@Url.Action("DownloadDiffFiles", "user", new {FileToDownload =  @Model.FileNames}) ">@Model.FileNames</a></td>
 
 
 

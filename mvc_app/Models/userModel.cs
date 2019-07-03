@@ -8,29 +8,28 @@ namespace mvc_app.Models
     public class UserModel
     {
         [Required(ErrorMessage = "please enter username")]
-       public string Name{ get;set;}
+       public string Name { get;set;}
 
+        [Required(ErrorMessage = "please enter Email")]
         [RegularExpression("^[a-zA-Z0-9_\\.-]+@([a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", ErrorMessage = "E-mail is not valid")]
-        public string Email{get;set; }
+        public string Email {get;set; }
 
         [Required(ErrorMessage = "please enter comments")]
-        public string Comments
-        {
-            get;set;
-        }
+        public string Comments {get;set;}
         [Required(ErrorMessage = "please enter a choice")]
-        public string Choice
-        { get; set; }
-        public FileAttribute FilePath { get; set; }
-              = new FileAttribute();
-       
+        public string Choice { get; set; }
+        public string FileNames { get; set; }
+
+        //public FileAttribute FilePath { get; set; }
+        //      = new FileAttribute();
+
 
     }
-    public class FileAttribute
-    {
-        public string Names { get; set; }
-        public string path { get; set; }
+    //public class FileAttribute
+    //{
+    //    public string Names { get; set; }
+    //    public string path { get; set; }
 
-    }
+    //}
 
 }

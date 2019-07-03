@@ -33,10 +33,12 @@ namespace mvc_app.Controllers
                 {
                     file.CopyToAsync(stream);
                     ViewBag.file = file.FileName;
-                    var modelData = new FileAttribute();
-                    modelData.Names = file.FileName;
-                    modelData.path = path;
-                    usermodel.FilePath=modelData;
+                    // var modelData = new FileAttribute();
+                    usermodel.FileNames = file.FileName;
+
+                 //   modelData.Names = file.FileName;
+                  //  modelData.path = path;
+                  //  usermodel.FilePath=modelData;
 
                 }
 
