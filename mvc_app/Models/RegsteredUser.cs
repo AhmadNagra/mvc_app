@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Http.Internal;
 
 namespace mvc_app.Models
 {
-    public class User
+    public class RegisteredUser
     {
-        public User()
+        public RegisteredUser()
         {
             Name = "";
             email_address = "";

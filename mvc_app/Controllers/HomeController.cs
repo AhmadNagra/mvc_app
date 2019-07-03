@@ -23,13 +23,12 @@ namespace mvc_app.Controllers
             return View();
         }
 
-        [HttpPost]
      
 
 
         
         [HttpPost]
-        public async Task<IActionResult> Validate(User u)
+        public async Task<IActionResult> Validate(RegisteredUser u)
         {
             UserCollection Coltemp=new UserCollection();
             

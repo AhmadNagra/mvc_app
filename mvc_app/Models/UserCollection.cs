@@ -7,6 +7,6 @@ namespace mvc_app.Models
 {
     public class UserCollection
     {
-        public List<User> Usercol { get; set; }=new List<User>();
+        public List<RegisteredUser> Usercol { get; set; }=new List<RegisteredUser>();
     }
 }
