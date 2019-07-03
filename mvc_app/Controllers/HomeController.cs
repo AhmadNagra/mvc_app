@@ -1,11 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.IO;
+using System.Net.Http;
 using mvc_app.Models.Home;
 using Microsoft.Extensions.FileProviders;
 using mvc_app.Models;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace mvc_app.Controllers
 {
@@ -23,15 +27,58 @@ namespace mvc_app.Controllers
             return View();
         }
 
-     
+        public async Task<IActionResult> MoveToTable()
+        {
+            UserCollection Coltemp = new UserCollection();
+            string baseUrl = "https://localhost:44347/api/RegisteredUsers";
+            try
+            {
 
+                using (HttpClient client = new HttpClient())
+                {
+                    using (HttpResponseMessage res = await client.GetAsync(baseUrl))
+                    {
+
+                        using (HttpContent content = res.Content)
+                        {
+                            var data = await content.ReadAsStringAsync();
+                            if (data != null)
+                            {
+                                List<RegisteredUser> test = JsonConvert.DeserializeObject<List<RegisteredUser>>(data);
+                                foreach (var item in test)
+                                {
+                                    Coltemp.Usercol.Add(item);
+                                }
+
+                                Console.WriteLine("data------------{0}", data);
+                            }
+                            else
+                            {
+                                Console.WriteLine("NO Data----------");
+                            }
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Exception Hit------------");
+                Console.WriteLine(exception);
+            }
+
+            return View("Validate",Coltemp);
+        }
+     
+        
 
         
         [HttpPost]
         public async Task<IActionResult> Validate(RegisteredUser u)
         {
-            UserCollection Coltemp=new UserCollection();
-            
+            UserCollection Coltemp = new UserCollection();
+
             if (ModelState.IsValid)
             {
                 var path = Path.Combine(

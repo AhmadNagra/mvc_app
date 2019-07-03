@@ -4,37 +4,7 @@
 }
 
 @model mvc_app.Models.UserCollection
-@*<body>
-<div>
-    <table class="table">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Email Address</th>
-            <th scope="col">Phone Number</th>
-            <th scope="col">Job Type</th>
-            <th scope="col">File Name</th>
-        </tr>
-        </thead>
-        <tbody>
-        @{ int i = 0;
-        @foreach (var item in Model.Usercol)
-            {
-                <tr>
-                    <td>@item.Name</td>
-                    <td>@item.email_address</td>
-                    <td>@item.phone_number</td>
-                    <td>@item.job_type</td>
-                    <td><a asp-action="Download" asp-route-filename="@item.SelectedFile.FileName">@item.SelectedFile.FileName</a></td>
-                </tr>
 
-            }
-        }
-        </tbody>
-        
-    </table>
-</div>
-</body>*@
 
 
 <table class="container">
@@ -56,7 +26,8 @@
                  <td>@item.email_address</td>
                  <td>@item.phone_number</td>
                  <td>@item.job_type</td>
-                 <td><a asp-action="Download" asp-route-filename="@item.SelectedFile.FileName">@item.SelectedFile.FileName</a></td>
+                 <td>File functionality in progress</td>
+                 @*<td><a asp-action="Download" asp-route-filename="@item.SelectedFile.FileName">@item.SelectedFile.FileName</a></td>*@
              </tr>
 
          }
