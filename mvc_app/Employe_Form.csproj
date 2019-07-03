@@ -12,6 +12,15 @@
 
   <ItemGroup>
     <Folder Include="Views\Employe_detail\" />
+    <Folder Include="Views\Emp_File\" />
+    <Folder Include="Views\NewFolder\" />
+    <Folder Include="wwwroot\Files\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\User\UploadFiles.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
   </ItemGroup>
 
 </Project>

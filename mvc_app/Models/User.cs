@@ -10,7 +10,7 @@ namespace mvc_app.Models
 
         [Required(ErrorMessage = "Enter Name")]
         public string Name { get; set; }
-
+        [Required(ErrorMessage = "Please Select Employe_Role Name")]
         public string Employe_Role { get; set; }
 
         public string Address { get; set; }

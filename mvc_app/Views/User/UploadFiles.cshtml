@@ -1,0 +1,46 @@
+﻿
+@model  List<mvc_app.Models.User>
+@{
+    ViewData["Title"] = "UploadFiles";
+}
+
+<h2>UploadFiles</h2>
+
+<h4>User</h4>
+<hr />
+
+    <b>Employe Detail</b>
+
+   
+    <table class="table table-bordered table-responsive table-hover">
+        <thead>
+            <tr>
+                <th>Employee Id </th>
+                <th>Emplpoyee Name </th>
+                <th>Employee Role </th>
+                <th>Employee Address</th>
+                <th>Employee File</th>
+                <th> Download File</th>
+            
+            </tr>
+        </thead>
+<tbody>
+    @{int  i=0;
+    @foreach (var d in Model)
+    {
+        i++;
+    <tr>
+        <td>@d.Id</td>
+        <td>@d.Name</td>
+        <td>@d.Address</td>
+        <td>@d.Employe_Role</td>
+        <td>@d.File.FileName</td>
+        <td><a asp-action="Download" asp-route-filename="@d.File.FileName">@d.File.FileName</a></td>
+
+    </tr>
+    }}
+</tbody>
+    
+</table>
+
+

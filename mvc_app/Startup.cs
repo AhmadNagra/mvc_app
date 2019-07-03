@@ -62,7 +62,7 @@ namespace mvc_app
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Emp_File}/{action=File_View}/{id?}");
+                    template: "{controller=User}/{action=Emp_View}/{id?}");
             });
         }
     }
