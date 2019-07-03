@@ -3,11 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace mvc_app.Models
 {
-    public class ApiHandler
+    public partial class ApiHandler
     {
         private readonly HttpClient _httpClient;
         private Uri BaseEndpoint { get; set; }
@@ -23,7 +24,6 @@ namespace mvc_app.Models
         }
         private async Task<T> GetAsync<T>(Uri requestUrl) //Actual Url: Student Registeration
         {
-
             var response = await _httpClient.GetAsync(requestUrl, HttpCompletionOption.ResponseHeadersRead);
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();
@@ -33,7 +33,7 @@ namespace mvc_app.Models
           {
               var json = JsonConvert.SerializeObject(content, MicrosoftDateFormatSettings);
               return new StringContent(json, Encoding.UTF8, "application/json");
-          }*/
+          }
 
         private async Task<Message<T>> PostAsync<T>(Uri requestUrl, T content)
         {
@@ -53,6 +53,7 @@ namespace mvc_app.Models
             var data = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Message<T1>>(data);
         }
+        */
         private Uri CreateRequestUri(string relativePath, string queryString = "")
         {
             var endpoint = new Uri(BaseEndpoint, relativePath);
@@ -62,20 +63,10 @@ namespace mvc_app.Models
         }
         private HttpContent CreateHttpContent<T>(T content)
         {
-            var json = JsonConvert.SerializeObject(content, MicrosoftDateFormatSettings);
+            var json = JsonConvert.SerializeObject(content);
             return new StringContent(json, Encoding.UTF8, "application/json");
         }
 
-        private static JsonSerializerSettings MicrosoftDateFormatSettings
-        {
-            get
-            {
-                return new JsonSerializerSettings
-                {
-                    DateFormatHandling = DateFormatHandling.MicrosoftDateFormat
-                };
-            }
-        }
 
         private void addHeaders()
         {
@@ -83,6 +74,23 @@ namespace mvc_app.Models
             _httpClient.DefaultRequestHeaders.Add("userIP", "192.168.1.1");
         }
     }
+    public partial class ApiHandler
+    {
+        public async Task<List<StudentRegisterationModel>> GetUsers()
+        {
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "StudentRegisterations")); // Student Registeration here?
+            return await GetAsync<List<StudentRegisterationModel>>(requestUrl);
+        }
+
+     /*   public async Task<Message<UsersModel>> SaveUser(UsersModel model)
+        {
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "User/SaveUser"));
+            return await PostAsync<UsersModel>(requestUrl, model);
+        }*/
+    }
+
 
 }
-}
+
