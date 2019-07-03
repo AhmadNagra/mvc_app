@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.IO;
-using core.Models;
 using mvc_app.Models.Home;
 using Microsoft.Extensions.FileProviders;
+using mvc_app.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace mvc_app.Controllers
 {
@@ -24,42 +24,28 @@ namespace mvc_app.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> UploadFiles(List<IFormFile> files)
+     
+
+
+        
+        [HttpPost]
+        public async Task<IActionResult> Validate(User u)
         {
-            if (files == null || files.Count == 0)
-                return Content("files not selected");
-
-            foreach (var file in files)
-            {
-                var path = Path.Combine(
-                        Directory.GetCurrentDirectory(), "wwwroot",
-                        file.GetFilename());
-
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-            }
-
-            return RedirectToAction("Files");
-        }
-
-
-        public IActionResult Files()
-        {
-            var model = new FilesViewModel();
-            foreach (var item in this.fileProvider.GetDirectoryContents(""))
-            {
-                model.Files.Add(new FileDetails { Name = item.Name, Path = item.PhysicalPath });
-            }
-            return View(model);
-        }
-
-        public IActionResult Validate(User u)
-        {
+            UserCollection Coltemp=new UserCollection();
+            
             if (ModelState.IsValid)
             {
-                return RedirectToAction("Files", "Home");
+                var path = Path.Combine(
+                    Directory.GetCurrentDirectory(), "wwwroot",
+                    u.SelectedFile.GetFilename());
+                
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await u.SelectedFile.CopyToAsync(stream);
+                }
+
+                Coltemp.Usercol.Add(u);
+                return View(Coltemp);
             }
 
             return View("Index");
