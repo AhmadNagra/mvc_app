@@ -12,8 +12,15 @@ namespace mvc_app.Controllers
 {
     public class RegisterController : Controller
     {
-        private  static List<StudentRegisterationModel> StudentList = new List<StudentRegisterationModel>(); 
-        private  readonly string FilePath="wwwroot/Uploads";
+        private  static List<StudentRegisterationModel> StudentList = new List<StudentRegisterationModel>();
+        private  string FilePath;
+        private IConfiguration configuration;
+        public RegisterController(IConfiguration iConfig)
+        {
+            configuration = iConfig;
+            FilePath =configuration.GetSection("Manual_Settings").GetSection("FilePath").Value;
+        }
+
         public IActionResult InputView()
         {          
             return View();
@@ -25,11 +32,9 @@ namespace mvc_app.Controllers
         [HttpPost]
         public async Task<IActionResult> OutputView(StudentRegisterationModel M)
         {         
-            if (M.file == null )
+            if (M.file == null )    
                 return Content("files not selected");           
-                var path = Path.Combine(
-                        Directory.GetCurrentDirectory(),FilePath, 
-                        M.file.FileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(),FilePath, M.file.FileName);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
                     await M.file.CopyToAsync(stream);
@@ -76,6 +81,13 @@ namespace mvc_app.Controllers
                 {".csv", "text/csv"},
                 {".cs","text/plain" }
             };
+        }
+        public void ConnectToApi()
+        {
+            string ApiUrl = configuration.GetSection("Manual_Settings").GetSection("ApiUrl").Value;
+            //Note that this will only get the base point
+            //StudentRegisterations will have to entered later. 
+            OutputView();
         }
     }
 
