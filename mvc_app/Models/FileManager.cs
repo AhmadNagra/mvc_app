@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace mvc_app.Models
 {
-    public class OutputClass
+    public class FileManager
     {
-        public List<StudentRegisterationModel> StudentList=new List<StudentRegisterationModel> ();
     }
 }

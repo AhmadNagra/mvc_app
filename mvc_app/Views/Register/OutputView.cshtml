@@ -1,25 +1,39 @@
-﻿@model mvc_app.Models.OutputClass
-
+﻿@model List<mvc_app.Models.StudentRegisterationModel>
 @{
     ViewData["Title"] = "outputView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<hr />
+<form asp-action="InputView" >
+    <div  class="form-group" >
+        <button type="submit" class="btn btn-default "> Registeration</button>
+    </div>
+</form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.StudentList) { 
+    <table class="table table-hover">
+        <thead>
             <tr>
-                <td>
-                    <h4> @item.name  @item.program @item.detail </h4>
-                   
-                    
-                </td>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Program</th>
+                <th scope="col">Details</th>
+                <th scope="col">File Name</th>
+
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @{int i = 0;
+                @foreach (var item in Model)
+                {
+                    i++;
+                    <tr>
+                        <th scope="row">@i</th>
+                        <td>@item.name</td>
+                        <td>@item.program</td>
+                        <td>@item.detail</td>
+                        <td><input type="button" class="btn btn-default" value="@item.filename" onclick="location.href='@Url.Action("DownloadFile", "Register",new {filename=  @item.filename})'" /></td>
+                    </tr> 
+                }
+            }
+        </tbody>
+    </table>

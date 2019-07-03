@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-
+using Microsoft.Extensions.Configuration.Json;
 namespace mvc_app
 {
     public class Startup
@@ -19,6 +19,7 @@ namespace mvc_app
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            
         }
 
         public IConfiguration Configuration { get; }
@@ -61,7 +62,7 @@ namespace mvc_app
             {
                 routes.MapRoute(
                     name: "default",
-                     template: "{controller=Register}/{action=InputView}/{id?}");             
+                     template: "{controller=Register}/{action=OutputView}/{id?}");             
             });
         }
     }
