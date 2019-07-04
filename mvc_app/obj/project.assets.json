@@ -12538,11 +12538,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mhas\\Desktop\\mvc_app\\mvc_app\\mvc_app.csproj",
+      "projectUniqueName": "C:\\Users\\mhas\\Desktop\\Test\\mvc_app\\mvc_app\\mvc_app.csproj",
       "projectName": "mvc_app",
-      "projectPath": "C:\\Users\\mhas\\Desktop\\mvc_app\\mvc_app\\mvc_app.csproj",
+      "projectPath": "C:\\Users\\mhas\\Desktop\\Test\\mvc_app\\mvc_app\\mvc_app.csproj",
       "packagesPath": "C:\\Users\\mhas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mhas\\Desktop\\mvc_app\\mvc_app\\obj\\",
+      "outputPath": "C:\\Users\\mhas\\Desktop\\Test\\mvc_app\\mvc_app\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
