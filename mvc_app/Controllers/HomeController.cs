@@ -1,38 +1,142 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using mvc_app.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.IO;
-using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+using System.Net.Http;
+using mvc_app.Models.Home;
 using Microsoft.Extensions.FileProviders;
+using mvc_app.Models;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace mvc_app.Controllers
 {
     public class HomeController : Controller
     {
-       
+        private readonly IFileProvider fileProvider;
+
+        public HomeController(IFileProvider fileProvider)
+        {
+            this.fileProvider = fileProvider;
+        }
+
         public IActionResult Index()
         {
-
             return View();
         }
-        
-      
 
-        [HttpGet]
-        public IActionResult mypage()
-        
+        public async Task<IActionResult> MoveToTable()
         {
-            return View();
+            UserCollection Coltemp = new UserCollection();
+            string baseUrl = "https://localhost:44347/api/RegisteredUsers";
+            try
+            {
+
+                using (HttpClient client = new HttpClient())
+                {
+                    using (HttpResponseMessage res = await client.GetAsync(baseUrl))
+                    {
+
+                        using (HttpContent content = res.Content)
+                        {
+                            var data = await content.ReadAsStringAsync();
+                            if (data != null)
+                            {
+                                List<RegisteredUser> test = JsonConvert.DeserializeObject<List<RegisteredUser>>(data);
+                                foreach (var item in test)
+                                {
+                                    Coltemp.Usercol.Add(item);
+                                }
+
+                                Console.WriteLine("data------------{0}", data);
+                            }
+                            else
+                            {
+                                Console.WriteLine("NO Data----------");
+                            }
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Exception Hit------------");
+                Console.WriteLine(exception);
+            }
+
+            return View("Validate",Coltemp);
         }
+     
+        
+
+        
         [HttpPost]
-        public IActionResult mypage( String name)
+        public async Task<IActionResult> Validate(RegisteredUser u)
         {
-            return View();
+            UserCollection Coltemp = new UserCollection();
+
+            if (ModelState.IsValid)
+            {
+                var path = Path.Combine(
+                    Directory.GetCurrentDirectory(), "wwwroot/Files",
+                    u.SelectedFile.GetFilename());
+                u.FileName = u.SelectedFile.GetFilename();
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await u.SelectedFile.CopyToAsync(stream);
+                }
+
+                Coltemp.Usercol.Add(u);
+                return View(Coltemp);
+            }
+
+            return View("Index");
+        }
+
+        public async Task<IActionResult> Download(string filename)
+        {
+            if (filename == null)
+                return Content("filename not present");
+
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files", filename);
+
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            return File(memory, GetContentType(path), Path.GetFileName(path));
+        }
+
+        private string GetContentType(string path)
+        {
+            var types = GetMimeTypes();
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            return types[ext];
+        }
+
+        private Dictionary<string, string> GetMimeTypes()
+        {
+            return new Dictionary<string, string>
+            {
+                {".txt", "text/plain"},
+                {".pdf", "application/pdf"},
+                {".doc", "application/vnd.ms-word"},
+                {".docx", "application/vnd.ms-word"},
+                {".xls", "application/vnd.ms-excel"},
+                {".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"},
+                {".png", "image/png"},
+                {".jpg", "image/jpeg"},
+                {".jpeg", "image/jpeg"},
+                {".gif", "image/gif"},
+                {".csv", "text/csv"},
+                {".cs","text/plain" }
+            };
         }
     }
 }

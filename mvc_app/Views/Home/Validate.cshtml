@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Validate";
+}
+
+@model mvc_app.Models.UserCollection
+
+
+
+<table class="container">
+    <thead>
+    <tr>
+        <th><h1>Name</h1></th>
+        <th><h1>Email Address</h1></th>
+        <th><h1>Phone Number</h1></th>
+        <th><h1>Job Type</h1></th>
+        <th><h1>File Name</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+    @{ int i = 0;
+        @foreach (var item in Model.Usercol)
+         {
+             <tr>
+                 <td>@item.Name</td>
+                 <td>@item.email_address</td>
+                 <td>@item.phone_number</td>
+                 <td>@item.job_type</td>
+                 <td>File functionality in progress</td>
+                 @*<td><a asp-action="Download" asp-route-filename="@item.SelectedFile.FileName">@item.SelectedFile.FileName</a></td>*@
+             </tr>
+
+         }
+    }
+    </tbody>
+</table>

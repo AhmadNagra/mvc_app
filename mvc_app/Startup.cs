@@ -11,14 +11,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-
+using Microsoft.Extensions.Configuration.Json;
 namespace mvc_app
 {
     public class Startup
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            Configuration = configuration;            
         }
 
         public IConfiguration Configuration { get; }
@@ -26,9 +26,18 @@ namespace mvc_app
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-          
+            //Service to Enable File Uploading and Downloading
+            services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(),"wwwroot")));
+            
+           
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+                
+            });
 
-            services.AddMvc();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -54,7 +63,11 @@ namespace mvc_app
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=user}/{action=userpage}/{id?}");
+                     template: "{controller=Register}/{action=OutputView}/{id?}");
+
+                routes.MapRoute(
+                name: "userpage",
+                 template: "{controller=user}/{action=userpage}/{id?}");
             });
         }
     }
