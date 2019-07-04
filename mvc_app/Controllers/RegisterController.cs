@@ -32,8 +32,7 @@ namespace mvc_app.Controllers
             return View();
         }
         public IActionResult InputView(StudentRegisterationModel M)
-        {
-
+        {       
             return View(M);
         }
         
@@ -43,7 +42,10 @@ namespace mvc_app.Controllers
             StudentList = Handler.GetStudents().Result;
             return View(StudentList);
         }
+        public void UpdateRecord()
+        {
 
+        }
         [HttpPost]
         public async Task<IActionResult> OutputView(StudentRegisterationModel M)
         {
