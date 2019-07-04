@@ -30,3 +30,35 @@ C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Register\InputView.g.cshtml.cs
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Register\OutputView.g.cshtml.cs
 C:\Users\mahm\Desktop\Job Tasks\Task MVC\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Home\Validate.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\bin\Debug\netcoreapp2.1\mvc_app.deps.json
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\bin\Debug\netcoreapp2.1\mvc_app.runtimeconfig.json
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\bin\Debug\netcoreapp2.1\mvc_app.runtimeconfig.dev.json
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\bin\Debug\netcoreapp2.1\mvc_app.dll
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\bin\Debug\netcoreapp2.1\mvc_app.pdb
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\bin\Debug\netcoreapp2.1\mvc_app.Views.dll
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\bin\Debug\netcoreapp2.1\mvc_app.Views.pdb
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csprojAssemblyReference.cache
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csproj.CoreCompileInputs.cache
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.RazorAssemblyInfo.cache
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.RazorAssemblyInfo.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.AssemblyInfoInputs.cache
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.AssemblyInfo.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.TagHelpers.input.cache
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.TagHelpers.output.cache
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.RazorCoreGenerate.cache
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Home\Validate.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Register\InputView.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Register\OutputView.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.RazorTargetAssemblyInfo.cache
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.RazorTargetAssemblyInfo.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.Views.pdb
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.dll
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.pdb
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csproj.CopyComplete
