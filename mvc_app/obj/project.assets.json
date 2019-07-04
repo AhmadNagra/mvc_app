@@ -11797,23 +11797,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\mhas\\.nuget\\packages\\": {},
+    "C:\\Users\\saar\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mhas\\Desktop\\mvc_app\\mvc_app\\mvc_app.csproj",
+      "projectUniqueName": "C:\\Users\\saar\\Downloads\\pro1\\mvc_app\\mvc_app\\mvc_app.csproj",
       "projectName": "mvc_app",
-      "projectPath": "C:\\Users\\mhas\\Desktop\\mvc_app\\mvc_app\\mvc_app.csproj",
-      "packagesPath": "C:\\Users\\mhas\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mhas\\Desktop\\mvc_app\\mvc_app\\obj\\",
+      "projectPath": "C:\\Users\\saar\\Downloads\\pro1\\mvc_app\\mvc_app\\mvc_app.csproj",
+      "packagesPath": "C:\\Users\\saar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\saar\\Downloads\\pro1\\mvc_app\\mvc_app\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\mhas\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\saar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
