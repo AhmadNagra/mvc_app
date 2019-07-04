@@ -88,7 +88,7 @@ namespace mvc_app.Models
         public async Task<Message<StudentRegisterationModel>> UpdateUser(StudentRegisterationModel model)
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-              "StudentRegisterations"));
+              "StudentRegisterations"),model.id.ToString());
             return await PutAsync<StudentRegisterationModel>(requestUrl, model);
         }
     }

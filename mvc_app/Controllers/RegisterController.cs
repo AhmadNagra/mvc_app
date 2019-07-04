@@ -51,7 +51,12 @@ namespace mvc_app.Controllers
         {
             if (M.file == null) return Content("files not selected");
             await FManager.UploadFileAsync(M);
-            await Handler.SaveUser(M);
+
+            if (M.id != -1)
+                await Handler.UpdateUser(M);
+            else
+                await Handler.SaveUser(M);
+
             StudentList.Add(M);
             return View(StudentList);
         } 
