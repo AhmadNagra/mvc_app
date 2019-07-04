@@ -31,19 +31,32 @@ namespace mvc_app.Controllers
         {          
             return View();
         }
+        public IActionResult InputView(StudentRegisterationModel M)
+        {       
+            return View(M);
+        }
+        
 
         public IActionResult OutputView()
         {
             StudentList = Handler.GetStudents().Result;
             return View(StudentList);
         }
+        public void UpdateRecord()
+        {
 
+        }
         [HttpPost]
         public async Task<IActionResult> OutputView(StudentRegisterationModel M)
         {
             if (M.file == null) return Content("files not selected");
             await FManager.UploadFileAsync(M);
-            await Handler.SaveUser(M);
+
+            if (M.id != -1)
+                await Handler.UpdateUser(M);
+            else
+                await Handler.SaveUser(M);
+
             StudentList.Add(M);
             return View(StudentList);
         } 

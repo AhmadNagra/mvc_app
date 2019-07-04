@@ -47,25 +47,20 @@ namespace mvc_app.Models
               var json = JsonConvert.SerializeObject(content);
               return new StringContent(json, Encoding.UTF8, "application/json");
           }
-
-        private async Task<Message<T>> PostAsync<T>(Uri requestUrl, T content)
+        private async Task<Message<T>> PutAsync<T>(Uri requestUrl, T content) // For Editing
         {
-
+            var response = await _httpClient.PutAsync(requestUrl.ToString(), CreateHttpContent<T>(content));
+            response.EnsureSuccessStatusCode();
+            var data = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Message<T>>(data);
+        }
+        private async Task<Message<T>> PostAsync<T>(Uri requestUrl, T content) //For Adding 
+        {
             var response = await _httpClient.PostAsync(requestUrl.ToString(), CreateHttpContent<T>(content));
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Message<T>>(data);
         }
-
-
-        //private async Task<Message<T1>> PostAsync<T1, T2>(Uri requestUrl, T2 content)
-        //{
-
-        //    var response = await _httpClient.PostAsync(requestUrl.ToString(), CreateHttpContent<T2>(content));
-        //    response.EnsureSuccessStatusCode();
-        //    var data = await response.Content.ReadAsStringAsync();
-        //    return JsonConvert.DeserializeObject<Message<T1>>(data);
-        //}
         
         private Uri CreateRequestUri(string relativePath, string queryString = "")
         {
@@ -77,7 +72,7 @@ namespace mvc_app.Models
     }
     public partial class ApiHandler
     {
-        public async Task<List<StudentRegisterationModel>> GetStudents()
+        public async Task<List<StudentRegisterationModel>> GetStudents() //For getting
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 "StudentRegisterations")); // Student Registeration here?
@@ -89,6 +84,12 @@ namespace mvc_app.Models
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 "StudentRegisterations"));
             return await PostAsync<StudentRegisterationModel>(requestUrl, model);
+        }
+        public async Task<Message<StudentRegisterationModel>> UpdateUser(StudentRegisterationModel model)
+        {
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+              "StudentRegisterations"),model.id.ToString());
+            return await PutAsync<StudentRegisterationModel>(requestUrl, model);
         }
     }
 }
