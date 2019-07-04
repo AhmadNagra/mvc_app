@@ -154,7 +154,7 @@ namespace mvc_app.Controllers
             HttpResponseMessage msg = await client.DeleteAsync($"api/UserModels/{Id}");
             return RedirectToAction("ShowData");
         }
-    // SHOW THE DATA TO BE EDITED
+        // SHOW THE DATA TO BE EDITED
         public ActionResult EditUser(int Id)
         {
             UserModel User = new UserModel();
