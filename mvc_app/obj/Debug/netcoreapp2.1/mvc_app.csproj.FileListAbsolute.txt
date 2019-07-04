@@ -27,3 +27,4 @@ C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.pdb
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csproj.CopyComplete
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Validate.g.cshtml.cs
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Index.g.cshtml.cs
+C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\EditView.g.cshtml.cs
