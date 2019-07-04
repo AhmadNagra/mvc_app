@@ -31,6 +31,12 @@ namespace mvc_app.Controllers
         {          
             return View();
         }
+        public IActionResult InputView(StudentRegisterationModel M)
+        {
+
+            return View(M);
+        }
+        
 
         public IActionResult OutputView()
         {
