@@ -31,3 +31,4 @@ C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views
 C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\user\userpage.g.cshtml.cs
 C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\user\Upload.g.cshtml.cs
 C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\user\ShowData.g.cshtml.cs
+C:\Users\saar\Downloads\pro1\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\user\EditUser.g.cshtml.cs

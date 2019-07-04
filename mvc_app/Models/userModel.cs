@@ -9,6 +9,7 @@ namespace mvc_app.Models
 {
     public class UserModel
     {
+        public int Id { get; set; }
         [Required(ErrorMessage = "please enter username")]
         public string Name { get; set; }
 

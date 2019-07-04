@@ -147,7 +147,45 @@ namespace mvc_app.Controllers
             else
                 return View("userpage");
         }
+        public async Task<IActionResult> DeleteUser(int Id)
+        {
+            var User = new UserModel();
+            HttpClient client = _api.initial();
+            HttpResponseMessage msg = await client.DeleteAsync($"api/UserModels/{Id}");
+            return RedirectToAction("ShowData");
+        }
+    // SHOW THE DATA TO BE EDITED
+        public ActionResult EditUser(int Id)
+        {
+            UserModel User = new UserModel();
+            HttpClient Client = _api.initial();
+            var Response = Client.GetAsync($"api/UserModels/{Id}");
+            Response.Wait();
+            var Result = Response.Result;
+            if(Result.IsSuccessStatusCode)
+            {
+                var Read = Result.Content.ReadAsAsync<UserModel>();
+                Read.Wait();
+                User = Read.Result;
+            }
 
+            return View(User);
+        }
+        //POSTING UPDATED DATA 
+        [HttpPost]
+        public ActionResult EditUser(UserModel UserObj)
+        {
+            UserModel model = UserObj;
+            HttpClient Client = _api.initial();
+            var PutData=Client.PutAsJsonAsync<UserModel>("api/UserModels/"+UserObj.Id.ToString(), UserObj);
+            PutData.Wait();
+            var Result = PutData.Result;
+            if(Result.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ShowData");
+            }
+            return View(UserObj);
+        }
 
        
     }
