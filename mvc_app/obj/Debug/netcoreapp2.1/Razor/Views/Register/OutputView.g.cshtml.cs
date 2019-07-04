@@ -62,7 +62,7 @@ using mvc_app.Models;
             WriteLiteral("<hr />\r\n");
             EndContext();
             BeginContext(156, 171, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5851999583bb4f58b42344f6753b6140", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "735e433d5e7f49f0851dc52712f21ed0", async() => {
                 BeginContext(186, 134, true);
                 WriteLiteral("\r\n    <div class=\"form-group\">\r\n        <button type=\"submit\" class=\"btn btn-default \"> Registeration</button>          \r\n    </div>\r\n");
                 EndContext();
