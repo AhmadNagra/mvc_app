@@ -15,7 +15,6 @@ C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.TagHelpers
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.TagHelpers.output.cache
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.RazorCoreGenerate.cache
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
-C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.g.cshtml.cs
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.g.cshtml.cs
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.g.cshtml.cs
@@ -26,5 +25,5 @@ C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.Views.pdb
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.dll
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.pdb
 C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\mvc_app.csproj.CopyComplete
-C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
-C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Home\Validate.g.cshtml.cs
+C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Validate.g.cshtml.cs
+C:\Users\mhas\Desktop\mvc_app\mvc_app\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Index.g.cshtml.cs

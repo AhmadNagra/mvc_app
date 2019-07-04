@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Uploads\" />
+    <Folder Include="Views\Home\" />
     <Folder Include="wwwroot\Files\" />
   </ItemGroup>
 

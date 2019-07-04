@@ -23,6 +23,7 @@ namespace mvc_app.Models
             FileName = "";
         }
 
+        [DataMember(Name = "id")]
         public int id;
 
         [DataMember(Name = "name")]

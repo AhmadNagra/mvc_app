@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net.Http;
+using System.Text;
 using mvc_app.Models.Home;
 using Microsoft.Extensions.FileProviders;
 using mvc_app.Models;
@@ -15,12 +16,9 @@ namespace mvc_app.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IFileProvider fileProvider;
+        
 
-        public HomeController(IFileProvider fileProvider)
-        {
-            this.fileProvider = fileProvider;
-        }
+       
 
         public IActionResult Index()
         {
@@ -78,7 +76,8 @@ namespace mvc_app.Controllers
         public async Task<IActionResult> Validate(RegisteredUser u)
         {
             UserCollection Coltemp = new UserCollection();
-
+            var client = new HttpClient();
+            string Url = "https://localhost:44347/api/RegisteredUsers";
             if (ModelState.IsValid)
             {
                 var path = Path.Combine(
@@ -89,9 +88,9 @@ namespace mvc_app.Controllers
                 {
                     await u.SelectedFile.CopyToAsync(stream);
                 }
-
                 Coltemp.Usercol.Add(u);
-                return View(Coltemp);
+                var response= await client.PostAsJsonAsync<RegisteredUser>(Url,u);
+                return await MoveToTable();
             }
 
             return View("Index");
