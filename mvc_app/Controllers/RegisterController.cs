@@ -12,13 +12,12 @@ namespace mvc_app.Controllers
 {
     public class RegisterController : Controller
     {
+     
         private  static List<StudentRegisterationModel> StudentList = new List<StudentRegisterationModel>();
-
         private FileManager FManager;
         private IConfiguration configuration;
         private  readonly string ApiUrl;
         private ApiHandler Handler; 
-
         public RegisterController(IConfiguration iConfig)
         {
             configuration = iConfig;
@@ -26,24 +25,25 @@ namespace mvc_app.Controllers
             ApiUrl = configuration.GetSection("Manual_Settings").GetSection("ApiUrl").Value;
             Handler = new ApiHandler(new Uri(ApiUrl));
         }
-
     
+        [HttpPost]
         public IActionResult InputView(StudentRegisterationModel M)
         {       
             if (M == null) { return View(); }
             return View(M);
         }
-        
 
+      
+        public IActionResult InputView(int id)
+        {           
+            return View(new StudentRegisterationModel(id));
+        }
         public async Task<IActionResult> OutputView(int id=0, string type="")
         {
             if (id != 0)
             {
                 if (type == "Delete")
-                  await  DeleteRecord(id);
-                
-                else if (type =="Edit")
-                    await EditRecord(id);
+                  await  DeleteRecord(id);                        
             }
             try
             {
@@ -53,19 +53,20 @@ namespace mvc_app.Controllers
             {
                 Content(e.ToString());
             }
-            return View(StudentList);
-          
+            return View(StudentList);       
         }
       
         [HttpPost]
         public async Task<IActionResult> OutputView(StudentRegisterationModel M)
         {
             if (M.file == null) return Content("files not selected");
-            await FManager.UploadFileAsync(M);
-           
+            await FManager.UploadFileAsync(M);               
             try
             {
-               
+                if (M.id != 0)
+                    await EditRecord(M);
+              
+                else
                     await Handler.SaveUser(M);
             }catch (Exception e) { Content(e.ToString()); }
                 try
@@ -88,8 +89,7 @@ namespace mvc_app.Controllers
             StudentRegisterationModel M = new StudentRegisterationModel();
             M.id = id;
             await Handler.DeleteUser(M);
-           return RedirectToAction("OutputView");
-
+            return RedirectToAction("OutputView");
         }
         public async void AddRecord(StudentRegisterationModel M)
         {        
@@ -97,14 +97,10 @@ namespace mvc_app.Controllers
             {
                 await Handler.UpdateUser(M);
             }
-            catch (Exception e) { Content(e.ToString()); }
-            
+            catch (Exception e) { Content(e.ToString()); }          
         }
-        public async Task<IActionResult> EditRecord(int id)
-        {
-            StudentRegisterationModel M = new StudentRegisterationModel();
-            M.id = id;
-            RedirectToAction("InputView", M);
+        public async Task<IActionResult> EditRecord(StudentRegisterationModel M)
+        {                
             try
             {
                 await Handler.UpdateUser(M);
@@ -113,8 +109,6 @@ namespace mvc_app.Controllers
                 Content(e.ToString());
             }
             return RedirectToAction("OutputView");
-        }
-       
+        }       
     }
-
 }                                                              

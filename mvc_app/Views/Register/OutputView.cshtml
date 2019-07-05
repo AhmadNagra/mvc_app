@@ -33,7 +33,7 @@
                 <td>@item.program</td>
                 <td>@item.detail</td>
                 <td><a onclick="location.href='@Url.Action("DownloadFile", "Register",new {filename=  @item.filename})'" />@item.filename</td>
-                <td><a onclick="location.href='@Url.Action("OutputView", "Register",new { id = @item.id,type="Edit"})'" />Update</td>
+                <td><a onclick="location.href='@Url.Action("InputView", "Register",new { id = @item.id })'" />Update</td>
                 <td><a onclick="location.href='@Url.Action("OutputView", "Register",new { id = @item.id, type="Delete" })'" />Delete</td>
 
             </tr> 
