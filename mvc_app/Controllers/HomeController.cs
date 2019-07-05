@@ -16,9 +16,6 @@ namespace mvc_app.Controllers
 {
     public class HomeController : Controller
     {
-        
-
-       
 
         public IActionResult Index()
         {
@@ -28,7 +25,7 @@ namespace mvc_app.Controllers
         public async Task<IActionResult> MoveToTable()
         {
             UserCollection Coltemp = new UserCollection();
-            string baseUrl = "https://localhost:44347/api/RegisteredUsers";
+            string baseUrl = "https://localhost:44347/api/RegisteredUsers/GetAll";
             try
             {
 
@@ -46,6 +43,7 @@ namespace mvc_app.Controllers
                                 foreach (var item in test)
                                 {
                                     Coltemp.Usercol.Add(item);
+                                    
                                 }
 
                                 Console.WriteLine("data------------{0}", data);
