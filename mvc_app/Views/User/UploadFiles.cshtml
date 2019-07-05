@@ -10,12 +10,12 @@
 <hr />
 
     <b>Employe Detail</b>
-
+    <input type="button" class="btn-primary" style="float:right;" value="Create" onclick="location.href='@Url.Action("Emp_View", "user")'" />
    
     <table class="table table-bordered table-responsive table-hover">
         <thead>
             <tr>
-                <th>Employee Id </th>
+           
                 <th>Emplpoyee Name </th>
                 <th>Employee Role </th>
                 <th>Employee Address</th>
@@ -28,14 +28,15 @@
     @{int  i=0;
     @foreach (var d in Model)
     {
+      
         i++;
     <tr>
-        <td>@d.Id</td>
         <td>@d.Name</td>
         <td>@d.Address</td>
         <td>@d.Employe_Role</td>
-        <td>@d.File.FileName</td>
-        <td><a asp-action="Download" asp-route-filename="@d.File.FileName">@d.File.FileName</a></td>
+        <td>@d.file</td>
+    
+        <td><a asp-action="Download" asp-route-filename="@d.file">@d.file</a></td>
 
     </tr>
     }}

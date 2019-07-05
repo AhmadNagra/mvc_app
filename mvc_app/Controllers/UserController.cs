@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Employe_Form.Models;
 using Microsoft.AspNetCore.Mvc;
 using mvc_app.Models;
 
@@ -11,6 +12,7 @@ namespace mvc_app.Controllers
     public class UserController : Controller
     {
         List<User> emplist = new List<User>();
+      
         public IActionResult Emp_View()
         {
             return View();
@@ -18,19 +20,24 @@ namespace mvc_app.Controllers
 
         public async Task<IActionResult> UploadFiles(User form)
         {
-            if (form.File == null || form.File.Length == 0)
+            if (form.datafile == null || form.datafile.Length == 0)
                 return Content("file not selected");
 
             var path = Path.Combine(
                      Directory.GetCurrentDirectory(), "wwwroot/Files",
-                   form.File.FileName);
+                   form.datafile.FileName);
 
             using (var stream = new FileStream(path, FileMode.Create))
             {
-                await form.File.CopyToAsync(stream);
+                await form.datafile.CopyToAsync(stream);
+                form.file = form.datafile.FileName;
             }
+           
+            API_Controller app = new API_Controller(new Uri("https://localhost:44347/api/"));
+            emplist = app.GetUsers().Result;
+            await app.SaveUser(form);
             emplist.Add(form);
-
+         
             return View(emplist);
         }
       
@@ -75,6 +82,6 @@ namespace mvc_app.Controllers
                 {".cs","text/plain" }
             };
         }
-
+        
     }
 }

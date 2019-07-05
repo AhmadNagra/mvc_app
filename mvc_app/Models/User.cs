@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace mvc_app.Models
 {
     public class User
     {
-        [Required(ErrorMessage="Enter Id") ]
-        public int   Id{ get;set; }
+
 
         [Required(ErrorMessage = "Enter Name")]
         public string Name { get; set; }
@@ -15,7 +15,10 @@ namespace mvc_app.Models
 
         public string Address { get; set; }
 
-        public IFormFile File { get; set; }
+     
+        public  string file { get; set; }
+        public IFormFile datafile { get; set; }
+
 
     }
 }
