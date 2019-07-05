@@ -68,6 +68,9 @@ namespace mvc_app
                 routes.MapRoute(
                 name: "userpage",
                  template: "{controller=user}/{action=userpage}/{id?}");
+                routes.MapRoute(
+                    name: "registrationpage",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
