@@ -7,6 +7,8 @@ namespace mvc_app.Models
 {
     public class StudentRegisterationModel
     {
+        public StudentRegisterationModel() { id = -1; }
+        public int id { get; set; }
         [Required(ErrorMessage = "Enter your Name")]
         public string name { get; set; }
         [Required(ErrorMessage = "Select a Program")]
