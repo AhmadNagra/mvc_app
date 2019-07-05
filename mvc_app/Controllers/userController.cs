@@ -11,7 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using mvc_app.Helper;
 using mvc_app.Models;
 using Newtonsoft.Json;
-
+using PagedList;
+using PagedList.Mvc;
 namespace mvc_app.Controllers
 {
     public class UserController : Controller
@@ -104,11 +105,13 @@ namespace mvc_app.Controllers
             return View();
            
         }
-        public async Task <IActionResult> ShowData()
+        public async Task <IActionResult> ShowData(string sort = "Id",int pageno=1)
         {
+            
+            ViewBag.PageToLoad = pageno;
             List<UserModel> Users = new List<UserModel>();
             HttpClient client = _api.initial();
-            HttpResponseMessage res = await client.GetAsync("api/UserModels");
+            HttpResponseMessage res = await client.GetAsync($"api/UserModels?page={pageno}&limit=5&sort={sort}");
             if(res.IsSuccessStatusCode)
             {
                 var results = res.Content.ReadAsStringAsync().Result;
@@ -116,6 +119,8 @@ namespace mvc_app.Controllers
             }
             return View(Users);
         }
+       
+
         [HttpPost]
         public IActionResult PostUser(IFormFile file, UserModel usermodel)
         {
