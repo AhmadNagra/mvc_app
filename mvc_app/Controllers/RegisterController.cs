@@ -35,7 +35,7 @@ namespace mvc_app.Controllers
         {       
             return View(M);
         }
-        
+
 
         public IActionResult OutputView()
         {

@@ -32,17 +32,17 @@ namespace mvc_app.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            var types = GetMimeTypes();
-            var ext = Path.GetExtension(path).ToLowerInvariant();
-            return types[ext];
-        }
+        //public IActionResult Privacy()
+        //{
+        //    var types = GetMimeTypes();
+        //    var ext = Path.GetExtension(path).ToLowerInvariant();
+        //    return types[ext];
+        //}
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        //[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        //public IActionResult Error()
+        //{
+        //    return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        //}
     }
 }
