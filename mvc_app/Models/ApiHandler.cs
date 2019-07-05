@@ -61,7 +61,14 @@ namespace mvc_app.Models
             var data = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Message<T>>(data);
         }
-        
+        private async Task<Message<T>> DeleteAsync<T>(Uri requestUrl, T content) // For Editing
+        {
+            var response = await _httpClient.DeleteAsync(requestUrl.ToString());
+            response.EnsureSuccessStatusCode();
+            var data = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Message<T>>(data);
+        }
+
         private Uri CreateRequestUri(string relativePath, string queryString = "")
         {
             var endpoint = new Uri(BaseEndpoint, relativePath);
@@ -88,8 +95,14 @@ namespace mvc_app.Models
         public async Task<Message<StudentRegisterationModel>> UpdateUser(StudentRegisterationModel model)
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-              "StudentRegisterations"),model.id.ToString());
+              "StudentRegisterations/"+model.id.ToString()));
             return await PutAsync<StudentRegisterationModel>(requestUrl, model);
+        }
+        public async Task<Message<StudentRegisterationModel>> DeleteUser(StudentRegisterationModel model)
+        {
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+              "StudentRegisterations/"+model.id.ToString()));
+             return await DeleteAsync<StudentRegisterationModel>(requestUrl, model);
         }
     }
 }

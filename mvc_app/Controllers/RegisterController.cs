@@ -27,10 +27,7 @@ namespace mvc_app.Controllers
             Handler = new ApiHandler(new Uri(ApiUrl));
         }
 
-    /*    public IActionResult InputView()
-        {          
-            return View();
-        }*/
+    
         public IActionResult InputView(StudentRegisterationModel M)
         {       
             if (M == null) { return View(); }
@@ -38,10 +35,40 @@ namespace mvc_app.Controllers
         }
         
 
-        public IActionResult OutputView()
+        public async Task<IActionResult> OutputView(int id=0, string type="")
         {
-            // List<StudentRegisterationModel> () TempList=
+            if (id != 0)
+            {
+                if (type == "Delete")
+                  await  DeleteRecord(id);
+                
+                else if (type =="Edit")
+                    await EditRecord(id);
+            }
             try
+            {
+                StudentList = Handler.GetStudents().Result;
+            }
+            catch (Exception e)
+            {
+                Content(e.ToString());
+            }
+            return View(StudentList);
+          
+        }
+      
+        [HttpPost]
+        public async Task<IActionResult> OutputView(StudentRegisterationModel M)
+        {
+            if (M.file == null) return Content("files not selected");
+            await FManager.UploadFileAsync(M);
+           
+            try
+            {
+               
+                    await Handler.SaveUser(M);
+            }catch (Exception e) { Content(e.ToString()); }
+                try
             {
                 StudentList = Handler.GetStudents().Result;
             }catch (Exception e)
@@ -50,31 +77,44 @@ namespace mvc_app.Controllers
             }
             return View(StudentList);
         }
-        public void UpdateRecord()
-        {
-
-        }
-        [HttpPost]
-        public async Task<IActionResult> OutputView(StudentRegisterationModel M)
-        {
-            if (M.file == null) return Content("files not selected");
-            await FManager.UploadFileAsync(M);
-            try
-            {
-                if (M.id != -1)
-                    await Handler.UpdateUser(M);
-                else
-                    await Handler.SaveUser(M);
-            }catch (Exception e) { Content(e.ToString()); }
-            StudentList.Add(M);
-            return View(StudentList);
-        } 
-
+       
         public IActionResult DownloadFile(string filename)
         {
             if (filename == null) return Content("filename is empty.");
            return FManager.DownloadFileAsync(filename).Result;
-        }    
+        }
+        public async Task<IActionResult> DeleteRecord(int id)
+        {
+            StudentRegisterationModel M = new StudentRegisterationModel();
+            M.id = id;
+            await Handler.DeleteUser(M);
+           return RedirectToAction("OutputView");
+
+        }
+        public async void AddRecord(StudentRegisterationModel M)
+        {        
+            try
+            {
+                await Handler.UpdateUser(M);
+            }
+            catch (Exception e) { Content(e.ToString()); }
+            
+        }
+        public async Task<IActionResult> EditRecord(int id)
+        {
+            StudentRegisterationModel M = new StudentRegisterationModel();
+            M.id = id;
+            RedirectToAction("InputView", M);
+            try
+            {
+                await Handler.UpdateUser(M);
+            }catch (Exception e)
+            {
+                Content(e.ToString());
+            }
+            return RedirectToAction("OutputView");
+        }
+       
     }
 
 }                                                              

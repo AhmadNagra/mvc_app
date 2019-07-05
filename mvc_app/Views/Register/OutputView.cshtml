@@ -18,8 +18,8 @@
                 <th onclick="sortTable(2)" scope="col">Program</th>
                 <th onclick="sortTable(3)" scope="col">Details</th>
                 <th onclick="sortTable(4)" scope="col">File Name</th>
-                <th scope="col">Update?</th>
-
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -28,12 +28,13 @@
                 {
                     i++;
             <tr>
-                <td>@i</td>
+                <td>@item.id</td>
                 <td>@item.name</td>
                 <td>@item.program</td>
                 <td>@item.detail</td>
                 <td><a onclick="location.href='@Url.Action("DownloadFile", "Register",new {filename=  @item.filename})'" />@item.filename</td>
-                <td><a onclick="location.href='@Url.Action("DownloadFile", "Register",new {filename=  @item.filename})'" />Update</td>
+                <td><a onclick="location.href='@Url.Action("OutputView", "Register",new { id = @item.id,type="Edit"})'" />Update</td>
+                <td><a onclick="location.href='@Url.Action("OutputView", "Register",new { id = @item.id, type="Delete" })'" />Delete</td>
 
             </tr> 
                 }
