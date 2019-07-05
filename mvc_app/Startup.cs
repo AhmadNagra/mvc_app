@@ -62,7 +62,7 @@ namespace mvc_app
             {
                 routes.MapRoute(
                     name: "default",
-                     template: "{controller=Register}/{action=OutputView}/{id?}");             
+                     template: "{controller=Home}/{action=Index}/{id?}");             
             });
         }
     }
