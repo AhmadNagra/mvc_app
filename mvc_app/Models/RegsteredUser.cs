@@ -12,17 +12,18 @@ namespace mvc_app.Models
     [DataContract]
     public class RegisteredUser
     {
-        public RegisteredUser()
-        {
-            id = 0;
-            Name = "";
-            email_address = "";
-            phone_number = "";
-            job_type = "";
-            password = "";
-            FileName = "";
-        }
+        //public RegisteredUser()
+        //{
+        //    id = 0;
+        //    Name = "";
+        //    email_address = "";
+        //    phone_number = "";
+        //    job_type = "";
+        //    password = "";
+        //    FileName = "";
+        //}
 
+        [DataMember(Name = "id")]
         public int id;
 
         [DataMember(Name = "name")]

@@ -54,6 +54,7 @@ namespace mvc_app
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -62,7 +63,14 @@ namespace mvc_app
             {
                 routes.MapRoute(
                     name: "default",
-                     template: "{controller=Register}/{action=OutputView}/{id?}");             
+                     template: "{controller=Register}/{action=OutputView}/{id?}");
+
+                routes.MapRoute(
+                name: "userpage",
+                 template: "{controller=user}/{action=userpage}/{id?}");
+                routes.MapRoute(
+                    name: "registrationpage",
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
