@@ -17,7 +17,8 @@ namespace mvc_app.Controllers
         private FileManager FManager;
         private IConfiguration configuration;
         private  readonly string ApiUrl;
-        private ApiHandler Handler; 
+        private ApiHandler Handler;
+        private static int PageSize = 10;
         public RegisterController(IConfiguration iConfig)
         {
             configuration = iConfig;
@@ -47,7 +48,8 @@ namespace mvc_app.Controllers
             }
             try
             {
-                StudentList = Handler.GetStudents().Result;
+                // StudentList = Handler.GetStudents().Result;
+                StudentList = Handler.GetStudents(1, "id", PageSize).Result;
             }
             catch (Exception e)
             {
@@ -68,14 +70,15 @@ namespace mvc_app.Controllers
               
                 else
                     await Handler.SaveUser(M);
-            }catch (Exception e) { Content(e.ToString()); }
-                try
-            {
-                StudentList = Handler.GetStudents().Result;
-            }catch (Exception e)
-            {
-                Content(e.ToString());
             }
+            catch (Exception e) { Content(e.ToString()); }
+            try
+            {
+                //  StudentList = Handler.GetStudents().Result; // Get All
+                // Have to add pagination here.
+                StudentList = Handler.GetStudents(1, "id", PageSize).Result;
+            }
+            catch (Exception e) { Content(e.ToString()); }
             return View(StudentList);
         }
        
@@ -88,26 +91,15 @@ namespace mvc_app.Controllers
         {
             StudentRegisterationModel M = new StudentRegisterationModel();
             M.id = id;
-            await Handler.DeleteUser(M);
+            try { await Handler.DeleteUser(M); }
+            catch (Exception e) { Content(e.ToString()); }
             return RedirectToAction("OutputView");
         }
-        public async void AddRecord(StudentRegisterationModel M)
-        {        
-            try
-            {
-                await Handler.UpdateUser(M);
-            }
-            catch (Exception e) { Content(e.ToString()); }          
-        }
+    
         public async Task<IActionResult> EditRecord(StudentRegisterationModel M)
-        {                
-            try
-            {
-                await Handler.UpdateUser(M);
-            }catch (Exception e)
-            {
-                Content(e.ToString());
-            }
+        {
+            try { await Handler.UpdateUser(M); }
+            catch (Exception e) { Content(e.ToString()); }
             return RedirectToAction("OutputView");
         }       
     }

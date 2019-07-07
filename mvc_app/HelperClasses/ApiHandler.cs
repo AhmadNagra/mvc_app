@@ -85,8 +85,28 @@ namespace mvc_app.Models
                 "StudentRegisterations")); // Student Registeration here?
             return await GetAsync<List<StudentRegisterationModel>>(requestUrl);
         }
+        public async Task<List<StudentRegisterationModel>> SearchStudents(int pageNo,string searchWith,string searchData,
+            string sortData,int pageSize) //For getting
+        {
+            // ?pageNo=1&searchWith=name&searchData=sahar&sortData=id&pageSize=5
+            string Qstring = "pageNo=" + pageNo + "&searchWith=" + searchWith + "&searchData=" + searchData +
+                "&sortData=" + sortData +"&pageSize=" + pageSize;
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "StudentRegisterations"),Qstring); // Student Registeration here?
+            return await GetAsync<List<StudentRegisterationModel>>(requestUrl);
+        }
 
-       public async Task<Message<StudentRegisterationModel>> SaveUser(StudentRegisterationModel model)
+        public async Task<List<StudentRegisterationModel>> GetStudents(int pageNo, string sortData, int pageSize) //For Specific Page Get
+        {
+            // ?pageNo=1&searchWith=name&searchData=sahar&sortData=id&pageSize=5
+            string Qstring = "pageNo=" + pageNo + "&sortData=" + sortData + "&pageSize=" + pageSize;
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "StudentRegisterations"), Qstring); // Student Registeration here?
+            return await GetAsync<List<StudentRegisterationModel>>(requestUrl);
+        }
+
+
+        public async Task<Message<StudentRegisterationModel>> SaveUser(StudentRegisterationModel model)
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 "StudentRegisterations"));
