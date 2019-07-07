@@ -59,7 +59,7 @@ using mvc_app.Models;
 #line default
 #line hidden
             BeginContext(92, 5155, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5cb33662cdc54c0991d740cc89412205", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "39a1618468124c28a17497677def0af1", async() => {
                 BeginContext(98, 84, true);
                 WriteLiteral("\r\n\r\n    <input type=\"button\" class=\"btn-primary\" style=\"float:right;\" value=\"Create\"");
                 EndContext();

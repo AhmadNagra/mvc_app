@@ -14,11 +14,11 @@
     <thead>
     <tr>
         <th >#</th>
-        <th >Name</th>
-        <th >Email Address</th>
-        <th >Phone Number</th>
-        <th >Job Type</th>
-        <th >File Name</th>
+        <th ><a asp-action="MoveToTable" asp-controller="Home" asp-route-sortby="name"> Name</a></th>
+        <th ><a asp-action="MoveToTable" asp-controller="Home" asp-route-sortby="email_address">Email Address</a></th>
+        <th ><a asp-action="MoveToTable" asp-controller="Home" asp-route-sortby="phone_number">Phone Number</a></th>
+        <th ><a asp-action="MoveToTable" asp-controller="Home" asp-route-sortby="job_type">Job Type</a></th>
+        <th ><a asp-action="MoveToTable" asp-controller="Home" asp-route-sortby="file_name">File Name</a></th>
     </tr>
     </thead>
     <tbody id="myTableBody">
@@ -44,10 +44,10 @@
     </tbody>
 </table>
 <ul>
-    @for (int x=1;x<10;x++)
-    {
-        <li><a asp-action="Pagination" asp-controller="Table" asp-route-pagenum="@x">@x</a></li>
-    }
+    @for (int x = 1; x <= ViewBag.count; x++)
+        {
+            <li><a asp-action="MoveToTable" asp-controller="Home" asp-route-pagenum="@x">@x</a></li>
+        }
 </ul>
 
 </body>

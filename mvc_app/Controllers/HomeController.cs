@@ -22,15 +22,17 @@ namespace mvc_app.Controllers
             return View();
         }
 
-        public async Task<IActionResult> MoveToTable()
+        public async Task<IActionResult> MoveToTable(string sortby="name", int pagenum=1)
         {
             UserCollection Coltemp = new UserCollection();
-            string baseUrl = "https://localhost:44347/api/RegisteredUsers/GetAll";
+            string baseUrl;
+            baseUrl = "https://localhost:44347/api/RegisteredUsers/GetAll?sortOrder="+sortby+ "&pageIndex=" + pagenum;
             try
             {
 
                 using (HttpClient client = new HttpClient())
                 {
+
                     using (HttpResponseMessage res = await client.GetAsync(baseUrl))
                     {
 
@@ -44,9 +46,10 @@ namespace mvc_app.Controllers
                                 {
                                     Coltemp.Usercol.Add(item);
                                     
-                                }
 
-                                Console.WriteLine("data------------{0}", data);
+                                }
+                                ViewBag.count = await Get_TotalPageCount();
+
                             }
                             else
                             {
@@ -94,6 +97,44 @@ namespace mvc_app.Controllers
             return View("Index");
         }
 
+        public async Task<double> Get_TotalPageCount()
+        {
+            double count = 0;
+            string baseUrl = "https://localhost:44347/api/RegisteredUsers/GetCount";
+            try
+            {
+
+                using (HttpClient client = new HttpClient())
+                {
+
+                    using (HttpResponseMessage res = await client.GetAsync(baseUrl))
+                    {
+
+                        using (HttpContent content = res.Content)
+                        {
+                            var data = await content.ReadAsStringAsync();
+                            if (data != null)
+                            {
+                                count = double.Parse(data);
+                            }
+                            else
+                            {
+                                Console.WriteLine("NO Data----------");
+                            }
+
+                        }
+                    }
+
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Exception Hit------------");
+                Console.WriteLine(exception);
+            }
+
+            return Math.Ceiling(count/5);
+        }
         public async Task<IActionResult> Download(string filename)
         {
             if (filename == null)
