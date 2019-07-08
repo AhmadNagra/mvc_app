@@ -11,7 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using mvc_app.Helper;
 using mvc_app.Models;
 using Newtonsoft.Json;
-
+using PagedList;
+using PagedList.Mvc;
 namespace mvc_app.Controllers
 {
     public class UserController : Controller
@@ -26,39 +27,9 @@ namespace mvc_app.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public IActionResult Upload(IFormFile file,UserModel usermodel)
-        {
-
-
-            if (ModelState.IsValid)
-            {
-
-                var path = Path.Combine(hostingEnvironment.WebRootPath, "images", file.FileName);
-                using (var stream = new FileStream(path, FileMode.Create))
-                {
-                    file.CopyToAsync(stream);
-
-                    usermodel.FileNames = file.FileName;
-
-                }
-
-
-                return View(usermodel);
-            }
-            else
-                return View("userpage");
-
-
-
-        }
-        public FileResult Download(string FileToDownload)
-        {
-            UserModel model = new UserModel();
-            var path = Path.Combine(hostingEnvironment.WebRootPath, "images",FileToDownload);
-            FileStream stream = new FileStream(path, FileMode.Create);
-            return File(stream, "image/png", FileToDownload);
-        }
+       
+        
+       
 
         public async Task<IActionResult> DownloadDiffFiles(string FileToDownload)
         {
@@ -104,18 +75,27 @@ namespace mvc_app.Controllers
             return View();
            
         }
-        public async Task <IActionResult> ShowData()
+        public async Task <IActionResult> ShowData(string sort = "Id",int pageno=1)
         {
+
+           
+            ViewBag.PageToLoad = pageno;
             List<UserModel> Users = new List<UserModel>();
             HttpClient client = _api.initial();
-            HttpResponseMessage res = await client.GetAsync("api/UserModels");
-            if(res.IsSuccessStatusCode)
+            HttpResponseMessage res = await client.GetAsync($"api/UserModels?page={pageno}&limit=5&sort={sort}");
+            HttpResponseMessage count = await client.GetAsync($"api/UserModels/countResponse");
+            if (res.IsSuccessStatusCode)
             {
                 var results = res.Content.ReadAsStringAsync().Result;
                 Users = JsonConvert.DeserializeObject<List<UserModel>>(results);
+                var resultcount= count.Content.ReadAsStringAsync().Result;
+                int Count = JsonConvert.DeserializeObject<int>(resultcount);
+                ViewBag.PageCount = Count;
             }
             return View(Users);
         }
+       
+
         [HttpPost]
         public IActionResult PostUser(IFormFile file, UserModel usermodel)
         {
