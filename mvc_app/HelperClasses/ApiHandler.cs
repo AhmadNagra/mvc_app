@@ -104,7 +104,13 @@ namespace mvc_app.Models
                 "StudentRegisterations"), Qstring); // Student Registeration here?
             return await GetAsync<List<StudentRegisterationModel>>(requestUrl);
         }
-
+        public async Task<int> GetTotalCount() //For Total Count
+        {
+                   
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "StudentRegisterations/GetAll")); // Student Registeration here?
+            return await GetAsync<int>(requestUrl);
+        }
 
         public async Task<Message<StudentRegisterationModel>> SaveUser(StudentRegisterationModel model)
         {
