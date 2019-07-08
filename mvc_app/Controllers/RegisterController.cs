@@ -27,19 +27,27 @@ namespace mvc_app.Controllers
             Handler = new ApiHandler(new Uri(ApiUrl));
         }
 
-        public IActionResult InputView()
+    /*    public IActionResult InputView()
         {          
             return View();
-        }
+        }*/
         public IActionResult InputView(StudentRegisterationModel M)
         {       
+            if (M == null) { return View(); }
             return View(M);
         }
 
 
         public IActionResult OutputView()
         {
-            StudentList = Handler.GetStudents().Result;
+            // List<StudentRegisterationModel> () TempList=
+            try
+            {
+                StudentList = Handler.GetStudents().Result;
+            }catch (Exception e)
+            {
+                Content(e.ToString());
+            }
             return View(StudentList);
         }
         public void UpdateRecord()
@@ -51,12 +59,13 @@ namespace mvc_app.Controllers
         {
             if (M.file == null) return Content("files not selected");
             await FManager.UploadFileAsync(M);
-
-            if (M.id != -1)
-                await Handler.UpdateUser(M);
-            else
-                await Handler.SaveUser(M);
-
+            try
+            {
+                if (M.id != -1)
+                    await Handler.UpdateUser(M);
+                else
+                    await Handler.SaveUser(M);
+            }catch (Exception e) { Content(e.ToString()); }
             StudentList.Add(M);
             return View(StudentList);
         } 
