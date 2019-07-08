@@ -29,7 +29,7 @@
                     @Html.DisplayNameFor(model => model.FileNames)
                 </th>
                 <th>
-                    Download link
+                    Download link @ViewBag.PageCount
                 </th>
                 <th>
 
@@ -70,10 +70,14 @@
     </table>
     <nav aria-label="Page navigation example">
         <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="@Url.Action("ShowData", "user", new {pageno = 1})">1</a></li>
-            <li class="page-item"><a class="page-link" href="@Url.Action("ShowData", "user", new {pageno = 2})">2</a></li>
-            <li class="page-item"><a class="page-link" href="@Url.Action("ShowData", "user", new {pageno = 3})">3</a></li>
+            @for (int i = 1; i < (@ViewBag.PageCount/3); i++) {
+            
+            <li class="page-item"><a class="page-link" href="@Url.Action("ShowData", "user", new {pageno = @i})">@i</a></li>
+            }
+            @*<li class="page-item"><a class="page-link" href="@Url.Action("ShowData", "user", new {pageno = 1})">1</a></li>
+        <li class="page-item"><a class="page-link" href="@Url.Action("ShowData", "user", new {pageno = 2})">2</a></li>
+        <li class="page-item"><a class="page-link" href="@Url.Action("ShowData", "user", new {pageno = 3})">3</a></li>*@
         </ul>
     </nav>
-   
+    
 </body>
