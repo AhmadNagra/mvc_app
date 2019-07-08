@@ -19,7 +19,7 @@ namespace mvc_app.Controllers
             var client = new HttpClient();
 
             UserCollection Coltemp = new UserCollection();
-            string baseUrl = "https://localhost:44347/api/RegisteredUsers";// for get
+            string baseUrl = "https://localhost:44347/api/GetAll";// for get
             string Url = "https://localhost:44347/api/RegisteredUsers/" + selectedid;//for delete
             
             try
@@ -57,13 +57,51 @@ namespace mvc_app.Controllers
             return View("Validate", Coltemp);
         }
 
+        //public async Task<IActionResult> Pagination(int pagenum)
+        //{
+        //    var client = new HttpClient();
+
+        //    UserCollection Coltemp = new UserCollection();
+        //    string baseUrl = "https://localhost:44347/api/RegisteredUsers/GetAll?pageIndex=" + pagenum;
+        //    try
+        //    {
+        //        using (HttpResponseMessage res = await client.GetAsync(baseUrl))
+        //        {
+        //            using (HttpContent content = res.Content)
+        //            {
+        //                var data = await content.ReadAsStringAsync();
+        //                if (data != null)
+        //                {
+        //                    List<RegisteredUser> test = JsonConvert.DeserializeObject<List<RegisteredUser>>(data);
+        //                    foreach (var item in test)
+        //                    {
+        //                        Coltemp.Usercol.Add(item);
+        //                    }
+        //                }
+        //                else
+        //                {
+        //                    Console.WriteLine("NO Data----------");
+        //                }
+
+        //            }
+        //        }
+        //    }
+        //    catch (Exception exception)
+        //    {
+        //        Console.WriteLine("Exception Hit------------");
+        //        Console.WriteLine(exception);
+        //    }
+
+        //    return View("Validate", Coltemp);
+        //}
+
         public async Task<IActionResult> Update(RegisteredUser user)
         {
             user.id = tempid;
             UserCollection Coltemp = new UserCollection();
             var client = new HttpClient();
             string Url = "https://localhost:44347/api/RegisteredUsers/"+user.id;
-            string baseUrl = "https://localhost:44347/api/RegisteredUsers";
+            string baseUrl = "https://localhost:44347/api/GetAll";
             var path = Path.Combine(
                 Directory.GetCurrentDirectory(), "wwwroot/Files",
                 user.SelectedFile.GetFilename());

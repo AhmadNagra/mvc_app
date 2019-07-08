@@ -13,12 +13,12 @@
 <table class="container" id="myTable">
     <thead>
     <tr>
-        <th onclick="sortTable(0)">#</th>
-        <th onclick="sortTable(1)">Name</th>
-        <th onclick="sortTable(2)">Email Address</th>
-        <th onclick="sortTable(3)">Phone Number</th>
-        <th onclick="sortTable(4)">Job Type</th>
-        <th onclick="sortTable(5)">File Name</th>
+        <th >#</th>
+        <th ><a asp-action="MoveToTable" asp-controller="Home" asp-route-sortby="name"> Name</a></th>
+        <th ><a asp-action="MoveToTable" asp-controller="Home" asp-route-sortby="email_address">Email Address</a></th>
+        <th ><a asp-action="MoveToTable" asp-controller="Home" asp-route-sortby="phone_number">Phone Number</a></th>
+        <th ><a asp-action="MoveToTable" asp-controller="Home" asp-route-sortby="job_type">Job Type</a></th>
+        <th ><a asp-action="MoveToTable" asp-controller="Home" asp-route-sortby="file_name">File Name</a></th>
     </tr>
     </thead>
     <tbody id="myTableBody">
@@ -43,47 +43,11 @@
 
     </tbody>
 </table>
-
+<ul>
+    @for (int x = 1; x <= ViewBag.count; x++)
+        {
+            <li><a asp-action="MoveToTable" asp-controller="Home" asp-route-pagenum="@x">@x</a></li>
+        }
+</ul>
 
 </body>
-<script>
-    function sortTable(n) {
-        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-        table = document.getElementById("myTable");
-        switching = true;
-        dir = "asc";
-        while (switching) {
-            switching = false;
-            rows = table.rows;
-            for (i = 1; i < (rows.length - 1); i++) {
-                shouldSwitch = false;
-                x = rows[i].getElementsByTagName("TD")[n];
-                y = rows[i + 1].getElementsByTagName("TD")[n];
-                if (dir == "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                } else if (dir == "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                }
-            }
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-                switchcount ++;
-            } else {
-                if (switchcount == 0 && dir == "asc") {
-                    dir = "desc";
-                    switching = true;
-                }
-            }
-        }
-    }
-
-</script>
-
-
