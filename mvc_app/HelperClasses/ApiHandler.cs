@@ -61,7 +61,14 @@ namespace mvc_app.Models
             var data = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<Message<T>>(data);
         }
-        
+        private async Task<Message<T>> DeleteAsync<T>(Uri requestUrl, T content) // For Editing
+        {
+            var response = await _httpClient.DeleteAsync(requestUrl.ToString());
+            response.EnsureSuccessStatusCode();
+            var data = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<Message<T>>(data);
+        }
+
         private Uri CreateRequestUri(string relativePath, string queryString = "")
         {
             var endpoint = new Uri(BaseEndpoint, relativePath);
@@ -78,8 +85,34 @@ namespace mvc_app.Models
                 "StudentRegisterations")); // Student Registeration here?
             return await GetAsync<List<StudentRegisterationModel>>(requestUrl);
         }
+        public async Task<List<StudentRegisterationModel>> SearchStudents(int pageNo,string searchWith,string searchData,
+            string sortData,int pageSize) //For getting
+        {
+            // ?pageNo=1&searchWith=name&searchData=sahar&sortData=id&pageSize=5
+            string Qstring = "pageNo=" + pageNo + "&searchWith=" + searchWith + "&searchData=" + searchData +
+                "&sortData=" + sortData +"&pageSize=" + pageSize;
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "StudentRegisterations"),Qstring); // Student Registeration here?
+            return await GetAsync<List<StudentRegisterationModel>>(requestUrl);
+        }
 
-       public async Task<Message<StudentRegisterationModel>> SaveUser(StudentRegisterationModel model)
+        public async Task<List<StudentRegisterationModel>> GetStudents(int pageNo, string sortData, int pageSize) //For Specific Page Get
+        {
+            // ?pageNo=1&searchWith=name&searchData=sahar&sortData=id&pageSize=5
+            string Qstring = "pageNo=" + pageNo + "&sortData=" + sortData + "&pageSize=" + pageSize;
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "StudentRegisterations"), Qstring); // Student Registeration here?
+            return await GetAsync<List<StudentRegisterationModel>>(requestUrl);
+        }
+        public async Task<int> GetTotalCount() //For Total Count
+        {
+                   
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+                "StudentRegisterations/GetAll")); // Student Registeration here?
+            return await GetAsync<int>(requestUrl);
+        }
+
+        public async Task<Message<StudentRegisterationModel>> SaveUser(StudentRegisterationModel model)
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
                 "StudentRegisterations"));
@@ -88,8 +121,14 @@ namespace mvc_app.Models
         public async Task<Message<StudentRegisterationModel>> UpdateUser(StudentRegisterationModel model)
         {
             var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
-              "StudentRegisterations"),model.id.ToString());
+              "StudentRegisterations/"+model.id.ToString()));
             return await PutAsync<StudentRegisterationModel>(requestUrl, model);
+        }
+        public async Task<Message<StudentRegisterationModel>> DeleteUser(StudentRegisterationModel model)
+        {
+            var requestUrl = CreateRequestUri(string.Format(System.Globalization.CultureInfo.InvariantCulture,
+              "StudentRegisterations/"+model.id.ToString()));
+             return await DeleteAsync<StudentRegisterationModel>(requestUrl, model);
         }
     }
 }

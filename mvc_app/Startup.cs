@@ -1,6 +1,8 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
+using ReflectionIT.Mvc.Paging;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -37,7 +39,7 @@ namespace mvc_app
                 options.MinimumSameSitePolicy = SameSiteMode.None;
                 
             });
-
+          
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
