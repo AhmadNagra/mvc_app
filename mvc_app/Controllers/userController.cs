@@ -11,8 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using mvc_app.Helper;
 using mvc_app.Models;
 using Newtonsoft.Json;
-using PagedList;
-using PagedList.Mvc;
+
 namespace mvc_app.Controllers
 {
     public class UserController : Controller
