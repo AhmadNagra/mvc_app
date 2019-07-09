@@ -153,7 +153,7 @@ namespace mvc_app.Controllers
             tempid = id;
             return View("EditView",user);
         }
-        public async Task<IActionResult> RegisterUser()
+        public IActionResult RegisterUser()
         {
             return View("Index");
         }
