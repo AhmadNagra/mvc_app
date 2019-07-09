@@ -49,30 +49,11 @@
     </environment>
 </head>
 <body>
-@*<nav class="navbar navbar-inverse">
-    <div class="container" style="width: fit-content; height: 10px">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Degree Registeration</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a asp-area="" asp-controller="user" asp-action="userpage">userpage</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Index">Register User</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>*@
+
 <ul class="navbar-fixed-top">
-    <li><a asp-area="" asp-controller="user" asp-action="userpage">userpage</a></li>
+    <li><a asp-area="" asp-controller="user" asp-action="userpage">Userpage</a></li>
     <li><a asp-area="" asp-controller="Home" asp-action="Index">Register User</a></li>
-    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+    <li><a asp-area="" asp-controller="Register" asp-action="OutputView">Student Registerations</a></li>
 </ul>
 <partial name="_CookieConsentPartial"/>
 

@@ -66,7 +66,9 @@ namespace mvc_app
                 routes.MapRoute(
                     name: "default",
                      template: "{controller=Register}/{action=OutputView}/{id?}");
-
+                routes.MapRoute(
+                    name: "OutputView",
+                    template: "{controller=Register}/{action=OutputView}/{id?}");
                 routes.MapRoute(
                 name: "userpage",
                  template: "{controller=user}/{action=userpage}/{id?}");
