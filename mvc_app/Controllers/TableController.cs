@@ -57,43 +57,7 @@ namespace mvc_app.Controllers
             return View("Validate", Coltemp);
         }
 
-        //public async Task<IActionResult> Pagination(int pagenum)
-        //{
-        //    var client = new HttpClient();
-
-        //    UserCollection Coltemp = new UserCollection();
-        //    string baseUrl = "https://localhost:44347/api/RegisteredUsers/GetAll?pageIndex=" + pagenum;
-        //    try
-        //    {
-        //        using (HttpResponseMessage res = await client.GetAsync(baseUrl))
-        //        {
-        //            using (HttpContent content = res.Content)
-        //            {
-        //                var data = await content.ReadAsStringAsync();
-        //                if (data != null)
-        //                {
-        //                    List<RegisteredUser> test = JsonConvert.DeserializeObject<List<RegisteredUser>>(data);
-        //                    foreach (var item in test)
-        //                    {
-        //                        Coltemp.Usercol.Add(item);
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                    Console.WriteLine("NO Data----------");
-        //                }
-
-        //            }
-        //        }
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        Console.WriteLine("Exception Hit------------");
-        //        Console.WriteLine(exception);
-        //    }
-
-        //    return View("Validate", Coltemp);
-        //}
+       
 
         public async Task<IActionResult> Update(RegisteredUser user)
         {
