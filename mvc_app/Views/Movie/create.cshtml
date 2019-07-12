@@ -9,7 +9,7 @@
         <h2>create</h2>
     </div>
     <div class=" center-block">
-        @using (Html.BeginForm("Create", "Movie"))
+        @using (Html.BeginForm("insert", "Movie"))
         {
             <div class="form-groupl">
                 @Html.LabelFor(m => m.Title)
@@ -40,7 +40,6 @@
             </div>
             <div class="form-groupl">
                 @Html.LabelFor(m => m.Description)
-                @*@Html.TextBoxFor(m => m.Description, new { @class = "form-control" })*@
                 <textarea asp-for="Description" rows="4" cols="50" class=" form-control"></textarea>
             </div>
             <div class="form-groupl">

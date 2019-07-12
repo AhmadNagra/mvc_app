@@ -98,79 +98,56 @@ namespace mvc_app.Controllers
             return View(movies);
         }
 
-        //public ActionResult TableView ()
+        //public ActionResult create()
         //{
-        //    IEnumerable<Movie> movie = null;
-
-        //    using (var client = new HttpClient())
-        //    {
-        //        client.BaseAddress = new Uri("https://localhost:44347/api/");
-        //        //HTTP GET
-        //        var responseTask = client.GetAsync("movies");
-        //        responseTask.Wait();
-
-        //        var result = responseTask.Result;
-        //        if (result.IsSuccessStatusCode)
-        //        {
-        //            var readTask = result.Content.ReadAsAsync<IList<Movie>>();
-        //            readTask.Wait();
-
-        //            movie = readTask.Result;
-        //        }
-        //        else //web api sent error response 
-        //        {
-        //            //log response status here..
-
-        //            movie = Enumerable.Empty<Movie>();
-
-        //            ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-        //        }
-        //    }
-        //    return View(movie);
-        //    //return View(movies);
-        //    //return Content("Movie controller");
+        //    return View();
         //}
-        public ActionResult create()
+        [HttpPost]
+        public async Task<ActionResult> insert(Movie movie)
         {
-            return View();
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44347/api/movies");
+
+                //HTTP POST
+                var postTask =await client.PostAsJsonAsync<Movie>("https://localhost:44347/api/movies", movie);
+                //postTask.Wait();
+
+                //var result = postTask.Result;
+                if (postTask.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+            }
+
+            ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
+
+            return View(movie);
         }
-        //[HttpPost]
-        //public ActionResult create(Movie movie)
-        //{
 
-        //}
+        public ActionResult moveToCreate()
+        {
+            return View("insert");
+        }
+        public ActionResult Delete(int id)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:44347/api/");
 
-        // GET: Student
-        //    public ActionResult Index()
-        //    {
-        //        IEnumerable<Movie> movie = null;
+                //HTTP DELETE
+                var deleteTask = client.DeleteAsync("movies/" + id.ToString());
+                deleteTask.Wait();
 
-        //        using (var client = new HttpClient())
-        //        {
-        //            client.BaseAddress = new Uri("https://localhost:44347/api/");
-        //            //HTTP GET
-        //            var responseTask = client.GetAsync("movies");
-        //            responseTask.Wait();
+                var result = deleteTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
 
-        //            var result = responseTask.Result;
-        //            if (result.IsSuccessStatusCode)
-        //            {
-        //                var readTask = result.Content.ReadAsAsync<IList<Movie>>();
-        //                //readTask.Wait();
+                    return RedirectToAction("Index");
+                }
+            }
 
-        //                //movie = readTask.Result;
-        //            }
-        //            else //web api sent error response 
-        //            {
-        //                //log response status here..
-
-        //                movie = Enumerable.Empty<Movie>();
-
-        //                ModelState.AddModelError(string.Empty, "Server error. Please contact administrator.");
-        //            }
-        //        }
-        //        return View(movie);
-        //    }
-        //}
+            return RedirectToAction("Index");
+        }
     }
 }
