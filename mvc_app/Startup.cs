@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Configuration.Json;
+using Westwind.AspNetCore.LiveReload;
 namespace mvc_app
 {
     public class Startup
@@ -41,6 +42,7 @@ namespace mvc_app
             });
           
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+           
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,6 +77,7 @@ namespace mvc_app
                 routes.MapRoute(
                     name: "registrationpage",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
             });
         }
     }

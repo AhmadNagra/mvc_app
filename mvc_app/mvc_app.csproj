@@ -9,6 +9,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
     <PackageReference Include="ReflectionIT.Mvc.Paging" Version="3.0.0" />
+    <PackageReference Include="WestWind.AspnetCore.LiveReload" Version="0.1.5.2" />
   </ItemGroup>
 
   <ItemGroup>

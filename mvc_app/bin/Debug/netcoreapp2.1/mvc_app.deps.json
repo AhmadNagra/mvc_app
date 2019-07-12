@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "c9de9b6d6dc414323c472317d0a5ac0ee80cca69"
+    "signature": "b88944e347299c48b84feadc0fc8328016df2eb9"
   },
   "compilationOptions": {
     "defines": [
@@ -28,7 +28,8 @@
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.9",
-          "ReflectionIT.Mvc.Paging": "3.0.0"
+          "ReflectionIT.Mvc.Paging": "3.0.0",
+          "Westwind.AspnetCore.LiveReload": "0.1.5.2"
         },
         "runtime": {
           "mvc_app.dll": {}
@@ -533,6 +534,24 @@
           "System.Runtime.Extensions": "4.3.0",
           "System.Threading": "4.3.0",
           "System.Threading.Tasks": "4.3.0"
+        }
+      },
+      "Westwind.AspnetCore.LiveReload/0.1.5.2": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Hosting": "2.1.1",
+          "Microsoft.AspNetCore.Http.Abstractions": "2.1.1",
+          "Microsoft.AspNetCore.WebSockets": "2.1.1",
+          "Microsoft.Extensions.Configuration": "2.1.1",
+          "Microsoft.Extensions.DependencyInjection": "2.1.1"
+        },
+        "runtime": {
+          "lib/netcoreapp2.1/Westwind.AspnetCore.LiveReload.dll": {
+            "assemblyVersion": "0.1.5.2",
+            "fileVersion": "0.1.5.2"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp2.1/Westwind.AspnetCore.LiveReload.dll": {}
         }
       },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -3671,6 +3690,13 @@
       "sha512": "sha512-td7x21K8LalpjTWCzW/nQboQIFbq9i0r+PCyBBCdLWWnm4NBcdN18vpz/G9hCpUaCIfRL+ZxJNVTywlNlB1aLQ==",
       "path": "system.linq.parallel/4.3.0",
       "hashPath": "system.linq.parallel.4.3.0.nupkg.sha512"
+    },
+    "Westwind.AspnetCore.LiveReload/0.1.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-lt/6wQGrOszDhD7kG11uY+alrNAafIeYywWEiaDf8QBRwVz30zc3NYIuHZ/3Uv9DWYAw4zSV0ucI7CCrRgPeqw==",
+      "path": "westwind.aspnetcore.livereload/0.1.5.2",
+      "hashPath": "westwind.aspnetcore.livereload.0.1.5.2.nupkg.sha512"
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
       "type": "package",

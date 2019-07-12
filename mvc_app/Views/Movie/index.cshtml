@@ -1,0 +1,53 @@
+﻿@model IEnumerable<mvc_app.Models.Movie.Movie>
+@{
+    ViewData["Title"] = "index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="display:flex; justify-content:center">
+    <h2>Movies Table</h2>
+</div>
+<div style="display:flex; justify-content:space-around">
+    <table class="table table-bordered table-striped table-responsive table-hover ">
+        <tr>
+            <th>Movie ID </th>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Genre</th>
+            <th>ReleaseDate</th>
+            <th>Description</th>
+            <th>Poster</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var d in Model)
+        {
+            <tr>
+                <td>@d.Id</td>
+                <td>@d.Title</td>
+                <td>@d.Director</td>
+                <td>@d.Genre</td>
+                <td>@d.ReleaseDate</td>
+                <td>@d.Description</td>
+                <td>@d.Poster</td>
+                <td>
+                    @*<div style="display:flex; justify-content:space-between; flex-direction:row">
+            <a class="edit" style="margin-right:10px" title="Edit" data-toggle="tooltip">Update</a>
+
+            <a class="delete" title="Delete" data-toggle="tooltip">Delete</a>
+        </div>*@
+                    @Html.ActionLink("Edit", "Edit", new { id = d.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = d.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = d.Id })
+                </td>
+
+            </tr>
+        }
+
+
+    </table>
+</div>
+<div style="margin:20px;display:flex;justify-content:center">
+    <input name="create" value="Add Movie" id="addMovieBtn" title="Add Movie" class="btn btn-dark "
+           onclick="window.location.href='@Url.Action("create", "Movie")'" type="submit">
+    
+</div>
