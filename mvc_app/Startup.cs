@@ -14,6 +14,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Configuration.Json;
+using Microsoft.EntityFrameworkCore;
+using mvc_app.Models;
 namespace mvc_app
 {
     public class Startup
@@ -41,6 +43,7 @@ namespace mvc_app
             });
           
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

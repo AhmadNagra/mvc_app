@@ -25,7 +25,7 @@ namespace mvc_app.Controllers
             configuration = iConfig;
             FManager = new FileManager(configuration.GetSection("Manual_Settings").GetSection("FilePath").Value);
             ApiUrl = configuration.GetSection("Manual_Settings").GetSection("ApiUrl").Value;
-            Handler = new ApiHandler(new Uri(ApiUrl));
+            Handler = new ApiHandler(new Uri(ApiUrl)); //"https://localhost:44347/api/" 
             try
             {
                 Pages.Count = Handler.GetTotalCount().Result;
